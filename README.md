@@ -3,6 +3,6 @@
 ## Plan
 * [Installation](./install)
 * [Création et déploiement d'un monolithe](./monolith)
-* [Création et déploiement d'une architecture microservices](./microservices)
+* [Création et déploiement d'une architecture à microservices](./microservices)
 * [Service Mesh avec Istio](./istio)
 * [Bonus track](./bonus)
