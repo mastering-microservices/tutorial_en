@@ -1,0 +1,42 @@
+// From https://github.com/PacktPublishing/Full-Stack-Development-with-JHipster
+// License : https://github.com/PacktPublishing/Full-Stack-Development-with-JHipster/blob/master/LICENSE
+
+// =================================
+// Microservice invoice
+// =================================
+
+entity Invoice {
+		date Instant required
+    details String
+    status InvoiceStatus required
+  	paymentMethod PaymentMethod required
+    paymentDate Instant required
+    paymentAmount BigDecimal required
+}
+
+enum InvoiceStatus {
+	PAID, ISSUED, CANCELLED
+}
+
+entity Shipment {
+		trackingCode String
+    date Instant required
+    details String
+}
+
+enum PaymentMethod {
+	CREDIT_CARD, CASH_ON_DELIVERY, PAYPAL
+}
+
+relationship OneToMany {
+	 Invoice{shipment} to Shipment{invoice}
+}
+
+dto Invoice, Shipment with mapstruct
+//angularSuffix * with store
+//search * with elasticsearch
+//filter *
+
+service Invoice, Shipment with serviceClass
+paginate Invoice, Shipment with infinite-scroll
+microservice Invoice, Shipment with invoice

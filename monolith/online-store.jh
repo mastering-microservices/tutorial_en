@@ -1,0 +1,136 @@
+// From https://github.com/PacktPublishing/Full-Stack-Development-with-JHipster
+// License : https://github.com/PacktPublishing/Full-Stack-Development-with-JHipster/blob/master/LICENSE
+
+/* Online fashion store */
+
+// SHA1 is 160 bits-long (20 bytes)
+SHA_LEN = 40
+IMAGE_MAX_BYTES = 5000000
+
+/** Product sold by the Online store */
+entity Product {
+    sku String required /* TODO pattern */
+    upc String required /* TODO pattern */
+    name String required
+    description TextBlob
+    price BigDecimal required min(0)
+    size ProductSize required
+    colors String pattern(/^([a-z]+,)*[a-z]+$/) 
+    /** For uploading the image */
+    image ImageBlob maxbytes(IMAGE_MAX_BYTES)
+    /** For caching with HTTP header Etag and If-None-Match */
+    imageSha1 String minlength(SHA_LEN) maxlength(SHA_LEN) pattern(/[a-f0-9]{40}/)
+    /** For the content delivery network */
+    imageCdnUrl String /* TODO pattern */
+    /** For caching with HTTP header Etag and If-None-Match */
+    thumbnailSha1 String minlength(SHA_LEN) maxlength(SHA_LEN) pattern(/[a-f0-9]{40}/)
+    /** For the content delivery network */
+    thumbnailCdnUrl String /* TODO pattern */
+}
+
+enum Size {
+	XS, S, M, L, XL, XXL
+}
+
+entity ProductCategory {
+    name String required
+    description String
+}
+
+entity Customer {
+    firstName String required
+    lastName String required
+    gender Gender required
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    phone String required
+    addressLine1 String required
+    addressLine2 String
+    city String required
+    country String required
+}
+
+enum Gender {
+    MALE, FEMALE, OTHER
+}
+
+entity ProductOrder {
+    placedDate Instant required
+    status OrderStatus required
+    code String required
+}
+
+enum OrderStatus {
+    COMPLETED, PENDING, CANCELLED
+}
+
+entity OrderItem {
+    quantity Integer required min(0)
+    totalPrice BigDecimal required min(0)
+    status OrderItemStatus required
+}
+
+enum OrderItemStatus {
+    AVAILABLE, OUT_OF_STOCK, BACK_ORDER
+}
+
+entity Invoice {
+    code String required
+    date Instant required
+    details String
+    status InvoiceStatus required
+    paymentMethod PaymentMethod required
+    paymentDate Instant required
+    paymentAmount BigDecimal required
+}
+
+enum InvoiceStatus {
+    PAID, ISSUED, CANCELLED
+}
+
+enum PaymentMethod {
+    CREDIT_CARD, CASH_ON_DELIVERY, PAYPAL
+}
+
+entity Shipment {
+    trackingCode String
+    date Instant required
+    details String
+}
+
+relationship OneToOne {
+    Customer{user(login) required} to User
+}
+
+relationship ManyToOne {
+	OrderItem{product(name) required} to Product
+}
+
+relationship OneToMany {
+   Customer{order} to ProductOrder{customer(email) required}
+   ProductOrder{orderItem} to OrderItem{order(code) required}
+   ProductOrder{invoice} to Invoice{order(code) required}
+   Invoice{shipment} to Shipment{invoice(code) required}
+   ProductCategory{product} to Product{productCategory(name)}
+}
+
+
+// Set pagination options (pagination, pager, infinite-scroll)
+paginate Invoice, Shipment with infinite-scroll
+paginate Notification with infinite-scroll
+paginate Product with infinite-scroll
+paginate Customer, ProductOrder, OrderItem, ProductCategory with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+//angularSuffix * with onlineshop
+
+// Set search
+//search * with elasticsearch
+
+//Set filtering
+//filter *
