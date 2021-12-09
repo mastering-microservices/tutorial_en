@@ -1,9 +1,9 @@
-# Tutoriel sur les microservices avec JHipster :: Microservices
+# Tutorial on Microservices Architecture with JHipster :: Getting started with a microservices architecture
 
-L'objectif de cette partie est la mise en place de microservices avec l'infrastructure microservices de JHipster.
+The part aims to deploy a microservices architecture on GCP with JHipster.
 
-* [Création de l'architecture à microservices](microservices.md)
-* [Mise en production des Microservices sur GCP avec Kubernetes](deploy_k8n.md)
-* [Communication asynchrone inter services](microservices.md)
-* [Mise en place de l'authentification externe](auth.md)
-* [Nettoyage](clean.md)
+* [Generate the microservices architecture](microservices.md)
+* [Deploy in production the microservices on GCP with Kubernetes](deploy_k8n.md)
+* [Asynchronous communication between microservices](async.md)
+* [External authentication](auth.md)
+* [Cleaning](clean.md)
