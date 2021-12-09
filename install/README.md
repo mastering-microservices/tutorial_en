@@ -11,12 +11,26 @@ git clone git@github.com:mastering-microservices/tutorial_en.git
 ## JHipster Installation 
 Follow the instructions: https://www.jhipster.tech/installation/
 
-### Java
+### JDK (AdoptOpenJDK)
+
 ```bash
-scp -i ~/.ssh/mysshkey jdk-11.0.1_linux-x64_bin.deb tuto@host-1:~
+cd
+wget https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_x64_linux_hotspot_11.0.13_8.tar.gz
+tar xzf OpenJDK11U-jdk_x64_linux_hotspot_11.0.13_8.tar.gz
+export PATH=$PWD/jdk-11.0.13+8/bin:$PATH
+java -version
 ```
 
+```
+openjdk version "11.0.13" 2021-10-19
+OpenJDK Runtime Environment Temurin-11.0.13+8 (build 11.0.13+8)
+OpenJDK 64-Bit Server VM Temurin-11.0.13+8 (build 11.0.13+8, mixed mode)
+```
+
+Add `export PATH=$PWD/jdk-11.0.13+8/bin:$PATH` to `.bashrc`
+
 ### Nvm et Node
+
 Follow the instructions: https://github.com/creationix/nvm
 ```bash
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -28,12 +42,14 @@ nodejs --version
 ```
 
 ### Yeoman
+
 ```bash
 npm install -g yo
 yo --version
 ```
 
 ### JHipster Generator
+
 ```bash
 npm install -g generator-jhipster
 jhipster --version
@@ -41,6 +57,7 @@ jhipster --version
 ```
 
 ## Docker CE
+
 Follow the instructions https://docs.docker.com/install/ and https://docs.docker.com/compose/install/ for `docker-compose`.
 
 ```bash
@@ -49,6 +66,7 @@ docker-compose --version
 ```
 
 ## Heroku
+
 Follow the instructions: https://devcenter.heroku.com/articles/heroku-cli
 ```bash
 sudo snap install --classic heroku
@@ -104,4 +122,3 @@ Sometime, we need:
 source .bashrc 
 gcloud --help
 ```
-
