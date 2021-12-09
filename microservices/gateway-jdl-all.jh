@@ -7,16 +7,33 @@
 // Microservice productorder
 // =================================
 
+// SHA1 is 160 bits-long (20 bytes)
+SHA_LEN = 40
+IMAGE_MAX_BYTES = 5000000
+
+/** Product sold by the Online store */
 entity Product {
-	name String required
-  description String
-  image ImageBlob
-  price BigDecimal required min(0)
-  size Size required
+    sku String required /* TODO pattern */
+    upc String required /* TODO pattern */
+    name String required
+    description TextBlob
+    price BigDecimal required min(0)
+    productSize ProductSize required
+    colors String pattern(/^([a-z]+,)*[a-z]+$/) 
+    /** For uploading the image */
+    image ImageBlob maxbytes(IMAGE_MAX_BYTES)
+    /** For caching with HTTP header Etag and If-None-Match */
+    imageSha1 String minlength(SHA_LEN) maxlength(SHA_LEN) pattern(/[a-f0-9]{40}/)
+    /** For the content delivery network */
+    imageCdnUrl String /* TODO pattern */
+    /** For caching with HTTP header Etag and If-None-Match */
+    thumbnailSha1 String minlength(SHA_LEN) maxlength(SHA_LEN) pattern(/[a-f0-9]{40}/)
+    /** For the content delivery network */
+    thumbnailCdnUrl String /* TODO pattern */
 }
 
-enum Size {
-	S, M, L, XL, XXL
+enum ProductSize {
+	XS, S, M, L, XL, XXL
 }
 
 entity ProductCategory {
