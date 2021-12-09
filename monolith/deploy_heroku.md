@@ -1,54 +1,5 @@
 # Tutorial on Microservices Architecture with JHipster :: Deployment of the monolyth application
 
-## Deploy locally the application (`prod` profile) with Docker
-
-Build the image
-```bash
-./gradlew bootJar -Pprod jibDockerBuild
-docker images | grep store
-```
-
-Launch the composition docker-compose containing the application (`store-app`) et the datastore (`store-postgresql`).
-```bash
-docker-compose -f src/main/docker/app.yml up -d
-```
-
-Show the containers' logs
-```bash
-docker-compose -f src/main/docker/app.yml logs -f
-```
-
-Stop the `store` service
-```bash
-docker-compose -f src/main/docker/app.yml stop store
-```
-
-Restart the `store` service
-```bash
-docker-compose -f src/main/docker/app.yml start store
-```
-
-Stop the `store-postgresql` service
-```bash
-docker-compose -f src/main/docker/app.yml stop store-postgresql
-```
-> What's happen ?
-
-Restart the `store-postgresql` service
-```bash
-docker-compose -f src/main/docker/app.yml start store-postgresql
-```
-> What's happen ?
-
-Detroy the composition.
-
-```bash
-docker-compose -f src/main/docker/app.yml down
-```
-
-> Remark : data in the `store-postgresql` service are definitively lost.
-
-
 ## Deploy the application (`prod` profile) on Heroku
 
 Generate files for Heroku
@@ -78,13 +29,13 @@ Add a new `Product Category`.
 
 Add a new `Product`.
 
-### Check the application from the Heroku web console
+## Check the application from the Heroku web console
 
 Check your [Heroku's dashboard](https://dashboard.heroku.com/apps).
 
 Check your [Heroku's datastore dashboard](https://data.heroku.com).
 
-### Check the application from the Heroku CLI
+## Check the application from the Heroku CLI
 
 
 ```bash
@@ -140,7 +91,7 @@ heroku stack --app $APPID
 heroku status
 ```
 
-### Deploy the application (`prod` profile) with the Heroku CLI
+## Deploy the application (`prod` profile) with the Heroku CLI
 
 ```bash
 ./gradlew -x test -Pprod
@@ -168,7 +119,7 @@ Have a look on the application's configuration
 heroku config --app $APPID
 ```
 
-### Destroy the application (`prod` profile) with the Heroku CLI
+## Destroy the application (`prod` profile) with the Heroku CLI
 
 ```bash
 heroku apps:destroy --app $APPID  --confirm $APPID
