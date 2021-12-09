@@ -1,5 +1,54 @@
 # Tutorial on Microservices Architecture with JHipster :: Deployment of the monolyth application
 
+## Deploy locally the application (`prod` profile) with Docker
+
+Build the image
+```bash
+./gradlew bootJar -Pprod jibDockerBuild
+docker images | grep store
+```
+
+Launch the composition docker-compose containing the application (`store-app`) et the datastore (`store-postgresql`).
+```bash
+docker-compose -f src/main/docker/app.yml up -d
+```
+
+Show the containers' logs
+```bash
+docker-compose -f src/main/docker/app.yml logs -f
+```
+
+Stop the `store` service
+```bash
+docker-compose -f src/main/docker/app.yml stop store
+```
+
+Restart the `store` service
+```bash
+docker-compose -f src/main/docker/app.yml start store
+```
+
+Stop the `store-postgresql` service
+```bash
+docker-compose -f src/main/docker/app.yml stop store-postgresql
+```
+> What's happen ?
+
+Restart the `store-postgresql` service
+```bash
+docker-compose -f src/main/docker/app.yml start store-postgresql
+```
+> What's happen ?
+
+Detroy the composition.
+
+```bash
+docker-compose -f src/main/docker/app.yml down
+```
+
+> Remark : data in the `store-postgresql` service are definitively lost.
+
+
 ## Deploy the application (`prod` profile) on Heroku
 
 Generate files for Heroku
@@ -10,149 +59,121 @@ jhipster heroku
 
 ```
 Heroku configuration is starting
-? Name to deploy as: store
+? Name to deploy as: store-12345
 ? On which region do you want to deploy ? eu
 ? Which type of deployment do you want ? JAR (compile locally)
 ? Which Java version would you like to use to build and run your app ? 11
 ```
 
-Depuis la console Heroku, vérifiez que l'application `tuto-store` est créée.
+The application is automatically deployed
 
+Sign in into to the application https://$APPID.herokuapp.com/
 
 ```bash
-./gradlew bootWar -x test -Pprod
+APPID=store-12345
+open https://$APPID.herokuapp.com/
 ```
-> `-x test` n'exécute pas les tests
+
+Add a new `Product Category`.
+
+Add a new `Product`.
+
+### Check the application from the Heroku web console
+
+Check your [Heroku's dashboard](https://dashboard.heroku.com/apps).
+
+Check your [Heroku's datastore dashboard](https://data.heroku.com).
+
+### Check the application from the Heroku CLI
 
 
 ```bash
+APPID=store-12345
+
 heroku login -i
 
+heroku apps
+heroku apps:info
 heroku addons
 heroku plugins
-
-heroku plugins:install java
-
-heroku deploy:jar --jar build/libs/store-0.0.1-SNAPSHOT.war --app tuto-store
-
-heroku open  --app tuto-store
-open https://tuto-store.herokuapp.com
-
-heroku logs --tail --app tuto-store
-# Failed to connect to mysql
-
-heroku logs --tail --app tuto-store
 ```
 
-Ajoutez le addon MySQL
+Check the application log
+
 ```bash
-open https://dashboard.heroku.com/apps/tuto-store/settings
-
-heroku addons:open jawsdb  --app tuto-store
-
-heroku config --app tuto-store
-heroku config:get JAWSDB_URL --app tuto-store
+heroku logs --tail --app $APPID
 ```
 
-Ajoutez les propriétés du add-on MySQL à configurer dans l'application
+Some useful Heroku commands
+
 ```bash
-heroku config:set \
-   JDBC_DATABASE_URL=jdbc:mysql://xxxxxxxx.xxxxxxxx.eu-west-1.rds.amazonaws.com:3306/dddddddddddd?verifyServerCertificate=false  \
-   JDBC_DATABASE_USERNAME=uuuuuuuuuu  \
-   JDBC_DATABASE_PASSWORD=pppppppppp  \
- --app tuto-store
+APPID=store-12345
 
-#heroku config:unset PORT --app tuto-store
-
-heroku logs --tail --app tuto-store
-```
-
-Attendez que le serveur soit prêt
-```
-2018-12-14T11:42:05.268557+00:00 app[web.1]: ----------------------------------------------------------
-2018-12-14T11:42:05.268559+00:00 app[web.1]: Application 'store' is running! Access URLs:
-2018-12-14T11:42:05.268560+00:00 app[web.1]: Local: 		http://localhost:52037
-2018-12-14T11:42:05.268560+00:00 app[web.1]: External: 	http://172.17.78.18:52037
-2018-12-14T11:42:05.268562+00:00 app[web.1]: Profile(s): 	[prod, heroku]
-2018-12-14T11:42:05.268563+00:00 app[web.1]: ----------------------------------------------------------
-```
-
-Affichez la page du service quand celui ci est lancé.
-```bash
-heroku open  --app tuto-store
-```
-
-
-Quelques commandes supplémentaires avec Heroku:
-```bash
 heroku apps
 
-heroku apps:info --app tuto-store
+heroku apps:info --app $APPID
 
-heroku ps --app tuto-store
+heroku ps --app $APPID
 
-heroku ps:scale web=2 --app tuto-store
+heroku ps:scale web=2 --app $APPID
 
-heroku releases --app tuto-store
+heroku releases --app $APPID
 
-heroku drains --app tuto-store
+heroku drains --app $APPID
+```
 
-heroku maintenance:on --app tuto-store
+Turn off the application in maintenance
 
-heroku maintenance:off --app tuto-store
+```bash
+heroku maintenance:on --app $APPID
 
-heroku maintenance:on --app tuto-store
+open https://$APPID.herokuapp.com/
+```
 
-heroku stack --app tuto-store
+Exit the application in maintenance
+
+```bash
+heroku maintenance:off --app $APPID
+
+heroku stack --app $APPID
 
 heroku status
 ```
 
-
-## Lancement l'application store en mode (ie profil) `prod` dans un container
-
-Construisez l'image du conteneur
-```bash
-./gradlew bootWar -Pprod buildDocker
-docker images | grep store
-```
-
-Lancez la composition docker-compose qui comporte l'application (`store-app`) et le gestionnaire de base de données (`store-mysql`).
-```bash
-docker-compose -f src/main/docker/app.yml up -d
-```
-
-Depuis un autre terminal, visualisez les consoles des 2 services
-```bash
-docker-compose -f src/main/docker/app.yml logs -f
-```
-
-Arrêtez le service `store-app` de la composition
-```bash
-docker-compose -f src/main/docker/app.yml stop store
-```
-
-Redémarrez le service `store-app` de la composition
-```bash
-docker-compose -f src/main/docker/app.yml start store
-```
-
-Arrêtez le service `store-mysql` de la composition
-```bash
-docker-compose -f src/main/docker/app.yml stop mysql
-```
-> Que se passe t'il ?
-
-Redémarrez le service `store-mysql` de la composition
-```bash
-docker-compose -f src/main/docker/app.yml start mysql
-```
-> Que se passe t'il ?
-
-Détruisez la composition.
-> Remarque : les données rendues persistances dans les conteneurs sont définitivement perdues.
+### Deploy the application (`prod` profile) with the Heroku CLI
 
 ```bash
-docker-compose -f src/main/docker/app.yml down
+./gradlew -x test -Pprod
+```
+> `-x test` skip the tests
+
+Deploy the JAR file
+```bash
+heroku deploy:jar build/libs/*jar --app $APPID
 ```
 
+Open the web application
+```bash
+heroku open  --app $APPID
+open https://$APPID.herokuapp.com
+```
+
+Have a look on the application's log
+```bash
+heroku logs --tail --app tuto-store
+```
+
+Have a look on the application's configuration
+```bash
+heroku config --app $APPID
+```
+
+### Destroy the application (`prod` profile) with the Heroku CLI
+
+```bash
+heroku apps:destroy --app $APPID  --confirm $APPID
+```
+
+```bash
+open https://$APPID.herokuapp.com/
+```
