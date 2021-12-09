@@ -1,19 +1,27 @@
 # Tutorial on Microservices Architecture with JHipster :: Installation
 
+## Working directory
+```bash
+mkdir -p ~/github/mastering-microservices
+cd ~/github/mastering-microservices
+# git clone https://github.com/mastering-microservices/tutorial_en.git
+git clone git@github.com:mastering-microservices/tutorial_en.git
+```
+
 ## JHipster Installation 
 Follow the instructions: https://www.jhipster.tech/installation/
 
 ### Java
 ```bash
-scp -i ~/.ssh/xnet jdk-11.0.1_linux-x64_bin.deb tuto@host-1:~
+scp -i ~/.ssh/mysshkey jdk-11.0.1_linux-x64_bin.deb tuto@host-1:~
 ```
 
 ### Nvm et Node
 Follow the instructions: https://github.com/creationix/nvm
 ```bash
-wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 nvm ls-remote
-nvm install v8.11.3
+nvm install v12.22.7
 nodejs --version
 ```
 
