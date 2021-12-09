@@ -1,19 +1,18 @@
-# Tutoriel sur les microservices avec JHipster :: Microservices
-
-## Deploiement avec Kubernetes
+# Tutorial on Microservices Architecture with JHipster :: Deployment with Kubernetes
 
 ```bash
 docker --version
 kubectl version
 ```
 
-Générez les descripteurs de déploiement Kubernetes
+Generate the Kubernetes descriptors
 ```bash
 cd ~/github/mastering-microservices/
 mkdir kubernetes && cd kubernetes
 jhipster kubernetes
 ```
-Répondez aux questions suivantes:
+
+Answer to the questions:
 ```
 ? Which *type* of application would you like to deploy? Microservice application
 ? Enter the root directory where your gateway(s) and microservices are located ../
@@ -32,15 +31,15 @@ JHipster registry detected as the service discovery and configuration provider u
 ? Choose the kubernetes service type for your edge services LoadBalancer - Let a kubernetes cloud provider automatically assign an IP
 ```
 
-> Remarque: Si vous souhaitez utiliser Google Container Registry pour héberger des images de conteneur dans un registre privé, vous devrez utiliser pour le nom de base du référentiel Docker défini sur gcr.io/YOUR_PROJECT_ID (gcr.io/tuto-store dans cet exercice).
+> Remark: You can use Google Container Registry for storing the containers images into a private registry. You should use the Docker registry gcr.io/YOUR_PROJECT_ID (gcr.io/tuto-store) in this exercice).
 
-Jetez un coup d'oeil aux fichier générés
+Have a look to the generated files
 ```bash
 tree .
 cat ./kubectl-apply.sh
 ```
 
-Loggez vous sur votre dépôt public (hub.docker.com) or privé (gcr.io).
+Signin the public registry (hub.docker.com) or the private registry (gcr.io).
 ```bash
 docker login
 > Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
@@ -48,7 +47,7 @@ docker login
 > Password:
 ```
 
-Poussez les images vers votre dépôt public (hub.docker.com) or privé (Container Registry de GCP https://console.cloud.google.com/gcr/images/tuto-store?project=tuto-store).
+Push the images your public registry (hub.docker.com) or your private registry (GCP Container Registry https://console.cloud.google.com/gcr/images/tuto-store?project=tuto-store).
 
 ```
 REPO=masteringmicroservice
@@ -68,12 +67,12 @@ push_image notification
 open https://hub.docker.com/r/$REPO/
 ```
 
-Créez un cluster dans la zone europe-west1-b de GCE depuis https://console.cloud.google.com/kubernetes/list
+Create a cluster into the GCE region `europe-west1-b` https://console.cloud.google.com/kubernetes/list
 
 ![GCP Services](./gcp-k8s-services.png)
 
 
-Lancez les containers sur le cluster
+Launch the containers
 ```
 gcloud container clusters get-credentials tuto-cluster --zone  europe-west1-b
 ```
@@ -82,46 +81,49 @@ gcloud container clusters get-credentials tuto-cluster --zone  europe-west1-b
 ./kubectl-apply.sh
 ```
 
-Repérez les adresses IP des composants avec
+Note the IP addresses on the components with 
 ```
-kubectl get svc -n tuto-store
+kubectl get svc -n $APPID
 ```
 
 
-Repérez l'adresse IP externe de la gateway avec
+Note the IP addresses on the gateway with
 ```
-kubectl get svc gateway -n tuto-store
+kubectl get svc gateway -n $APPID
 ```
+
 ```
 NAME      TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)          AGE
 gateway   LoadBalancer   10.123.456.789   35.123.456.789   8080:32082/TCP   8h
 ```
 
-Ouvrez la page du service store (le frontend Angular est livré sur la gateway):
+Open the application (NB: the Angular frontend is served by the gateway):
 ```
 open http://35.123.456.789:8080
 ```
 
-Repérez l'adresse IP externe de la console avec
-```
-kubectl get svc jhipster-console -n tuto-store
-```
+Note the IP addresses on the console with
 
+```
+kubectl get svc jhipster-console -n $APPID
+```
 
 ![GCP Console](./gcp-console.png)
 
-Plus de commandes kubectl https://kubernetes.io/docs/reference/kubectl/overview/
+More commands of kubectl https://kubernetes.io/docs/reference/kubectl/overview/
 
-Exposez le registre et repérez l'adresse IP externe de le registre avec les instructions suivantes
+Expose the registry and note the external IP address with the following instructions
+
 ```
-kubectl expose service jhipster-registry --type=NodePort --name=exposed-registry -n tuto-store
-kubectl get svc exposed-registry -n tuto-store
-kubectl scale statefulset jhipster-registry --replicas 2 -n tuto-store
+kubectl expose service jhipster-registry --type=NodePort --name=exposed-registry -n $APPID
+kubectl get svc exposed-registry -n $APPID
+kubectl scale statefulset jhipster-registry --replicas 2 -n $APPID
 ```
 
-Répliquez le registre exposé
+Replicate the registry
 ```
-kubectl get svc exposed-registry -n tuto-store
-kubectl scale statefulset jhipster-registry --replicas 2 -n tuto-store
-kubectl get svc exposed-registry -n tuto-store
+kubectl get svc exposed-registry -n $APPID
+kubectl scale statefulset jhipster-registry --replicas 2 -n $APPID
+kubectl get svc exposed-registry -n $APPID
 ```
+
