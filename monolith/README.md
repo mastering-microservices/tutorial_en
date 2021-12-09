@@ -1,9 +1,9 @@
-# Tutoriel sur les microservices avec JHipster :: Démarrage avec un monolithe
+# Tutorial on Microservices Architecture with JHipster :: Geeting started with a monolith application
 
-* [Création du monolithe (avec Graddle)](monolith.md)
-* [Création du monolithe (avec Maven)](monolith-mvn.md)
-* [Mise en production du service sur Heroku](deploy_heroku.md)
-* [Mise en production du service sur Google App Engine](deploy_gcp.md)
-* [Test d'injection de charge de l'application en production](gatling.md)
-* [Création d'un frontend hybride](ionic.md)
-* [Nettoyage](clean.md)
+* [Generate a monolith application (with Graddle)](monolith.md)
+* [Generate a monolith application (with Maven)](monolith-mvn.md)
+* [Deploy in production on Heroku](deploy_heroku.md)
+* [Deploy in production on Google App Engine](deploy_gcp.md)
+* [Injection load test on the service in production](gatling.md)
+* [Generate a modile frontend with Ionic](ionic.md)
+* [Cleaning](clean.md)
