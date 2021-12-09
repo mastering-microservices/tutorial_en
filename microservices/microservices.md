@@ -58,24 +58,25 @@ Answer to the questions:
 ```
 ? Which *type* of application would you like to create? Microservice application
 ? What is the base name of your application? productorder
-? As you are running in a microservice architecture, on which port would like your server to run? It should be uniq
-ue to avoid port conflicts. 8081
+? Do you want to make it reactive with Spring WebFlux? No
+? As you are running in a microservice architecture, on which port would like your server to run? It should be unique to 
+avoid port conflicts. 8081
 ? What is your default Java package name? com.mycompany.store
-? Which service discovery server do you want to use? JHipster Registry (uses Eureka, provides Spring Cloud Config s
-upport and monitoring dashboards)
+? Which service discovery server do you want to use? JHipster Registry (uses Eureka, provides Spring Cloud Config support
+ and monitoring dashboards)
 ? Which *type* of authentication would you like to use? JWT authentication (stateless, with a token)
-? Which *type* of database would you like to use? SQL (H2, MySQL, MariaDB, PostgreSQL, Oracle, MSSQL)
+? Which *type* of database would you like to use? SQL (H2, PostgreSQL, MySQL, MariaDB, Oracle, MSSQL)
 ? Which *production* database would you like to use? MySQL
 ? Which *development* database would you like to use? H2 with disk-based persistence
-? Do you want to use the Spring cache abstraction? Yes, with the Hazelcast implementation (distributed cache, for m
-ultiple nodes)
+? Which cache do you want to use? (Spring cache abstraction) Hazelcast (distributed cache, for multiple nodes, supports r
+ate-limiting for gateway applications)
 ? Do you want to use Hibernate 2nd level cache? Yes
 ? Would you like to use Maven or Gradle for building the backend? Gradle
-? Which other technologies would you like to use?
+? Which other technologies would you like to use? 
 ? Would you like to enable internationalization support? Yes
 ? Please choose the native language of the application English
 ? Please choose additional languages to install French
-? Besides JUnit and Jest, which testing frameworks would you like to use? Gatling, Cucumber
+? Besides JUnit and Jest, which testing frameworks would you like to use? Cypress, Gatling, Cucumber
 ? Would you like to install other generators from the JHipster Marketplace? No
 ```
 
@@ -90,24 +91,25 @@ Answer to the questions:
 ```
 ? Which *type* of application would you like to create? Microservice application
 ? What is the base name of your application? invoice
-? As you are running in a microservice architecture, on which port would like your server to run? It should be uniq
-ue to avoid port conflicts. 8082
+? Do you want to make it reactive with Spring WebFlux? No
+? As you are running in a microservice architecture, on which port would like your server to run? It should be unique to 
+avoid port conflicts. 8082
 ? What is your default Java package name? com.mycompany.store
-? Which service discovery server do you want to use? JHipster Registry (uses Eureka, provides Spring Cloud Config s
-upport and monitoring dashboards)
+? Which service discovery server do you want to use? JHipster Registry (uses Eureka, provides Spring Cloud Config support
+ and monitoring dashboards)
 ? Which *type* of authentication would you like to use? JWT authentication (stateless, with a token)
-? Which *type* of database would you like to use? SQL (H2, MySQL, MariaDB, PostgreSQL, Oracle, MSSQL)
+? Which *type* of database would you like to use? SQL (H2, PostgreSQL, MySQL, MariaDB, Oracle, MSSQL)
 ? Which *production* database would you like to use? PostgreSQL
 ? Which *development* database would you like to use? H2 with disk-based persistence
-? Do you want to use the Spring cache abstraction? Yes, with the Hazelcast implementation (distributed cache, for m
-ultiple nodes)
+? Which cache do you want to use? (Spring cache abstraction) Hazelcast (distributed cache, for multiple nodes, supports r
+ate-limiting for gateway applications)
 ? Do you want to use Hibernate 2nd level cache? Yes
 ? Would you like to use Maven or Gradle for building the backend? Gradle
-? Which other technologies would you like to use?
+? Which other technologies would you like to use? 
 ? Would you like to enable internationalization support? Yes
 ? Please choose the native language of the application English
 ? Please choose additional languages to install French
-? Besides JUnit and Jest, which testing frameworks would you like to use? Gatling, Cucumber
+? Besides JUnit and Jest, which testing frameworks would you like to use? Cypress, Gatling, Cucumber
 ? Would you like to install other generators from the JHipster Marketplace? No
 ```
 
@@ -122,20 +124,22 @@ Answer to the questions:
 ```
 ? Which *type* of application would you like to create? Microservice application
 ? What is the base name of your application? notification
-? As you are running in a microservice architecture, on which port would like your server to run? It should be unique to avoid port confl
-icts. 8082
+? Do you want to make it reactive with Spring WebFlux? No
+? As you are running in a microservice architecture, on which port would like your server to run? It should be unique to 
+avoid port conflicts. 8083
 ? What is your default Java package name? com.mycompany.store
-? Which service discovery server do you want to use? JHipster Registry (uses Eureka, provides Spring Cloud Config support and monitoring
-dashboards)
+? Which service discovery server do you want to use? JHipster Registry (uses Eureka, provides Spring Cloud Config support
+ and monitoring dashboards)
 ? Which *type* of authentication would you like to use? JWT authentication (stateless, with a token)
 ? Which *type* of database would you like to use? MongoDB
-? Do you want to use the Spring cache abstraction? Yes, with the Hazelcast implementation (distributed cache, for multiple nodes)
+? Which cache do you want to use? (Spring cache abstraction) Hazelcast (distributed cache, for multiple nodes, supports r
+ate-limiting for gateway applications)
 ? Would you like to use Maven or Gradle for building the backend? Gradle
-? Which other technologies would you like to use?
+? Which other technologies would you like to use? 
 ? Would you like to enable internationalization support? Yes
 ? Please choose the native language of the application English
 ? Please choose additional languages to install French
-? Besides JUnit and Jest, which testing frameworks would you like to use? Gatling, Cucumber
+? Besides JUnit and Jest, which testing frameworks would you like to use? Cypress, Gatling, Cucumber
 ? Would you like to install other generators from the JHipster Marketplace? No
 ```
 
