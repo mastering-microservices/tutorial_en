@@ -433,7 +433,7 @@ JHipster registry detected as the service discovery and configuration provider u
 ? Choose the kubernetes service type for your edge services LoadBalancer - Let a kubernetes cloud provider automatically assign an IP
 ```
 
-> Remark: You can use Google Container Registry for storing the containers images into a private registry. You should use the Docker registry gcr.io/YOUR_PROJECT_ID (gcr.io/store-12345) in this exercice).
+> Remark: You can use Google Container Registry for storing the containers images into a private registry. You should use the Docker registry gcr.io/YOUR_PROJECT_ID (gcr.io/tuto-store) in this exercice).
 
 Have a look to the generated files
 ```bash
@@ -449,7 +449,7 @@ docker login
 > Password:
 ```
 
-Push the images your public registry (hub.docker.com) or your private registry (GCP Container Registry https://console.cloud.google.com/gcr/images/tuto-store?project=store-12345).
+Push the images your public registry (hub.docker.com) or your private registry (GCP Container Registry https://console.cloud.google.com/gcr/images/tuto-store?project=tuto-store).
 
 ```
 REPO=masteringmicroservice
