@@ -256,21 +256,21 @@ cd  ~/github/mastering-microservices/gateway
 jhipster import-jdl ../tutorial_en/microservices/gateway-jdl-all.jh
 ```
 
-## Generation of the code of the microservice productorder
+## Generation of the code of the microservice `productorder`
 
 ```bash
 cd  ~/github/mastering-microservices/productorder
 jhipster import-jdl ../tutorial_en/microservices/productorder-jdl.jh
 ```
 
-## Generation of the code of themicroservice invoice
+## Generation of the code of the microservice `invoice`
 
 ```bash
 cd  ~/github/mastering-microservices/invoice
 jhipster import-jdl ../tutorial_en/microservices/invoice-jdl.jh
 ```
 
-## Generation of the code of the microservice notification
+## Generation of the code of the microservice `notification`
 
 ```bash
 cd  ~/github/mastering-microservices/notification
@@ -339,7 +339,7 @@ cd  ~/github/mastering-microservices/notification
 docker images | grep notification
 ```
 
-## Generation the  docker-compose files
+## Generation the docker-compose files
 ```bash
 mkdir -p  ~/github/mastering-microservices/docker-compose
 cd  ~/github/mastering-microservices/docker-compose
