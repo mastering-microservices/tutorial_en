@@ -11,7 +11,7 @@ entity Product {
     name String required
     description TextBlob
     price BigDecimal required min(0)
-    productSize Size required
+    productSize ProductSize required
     colors String pattern(/^([a-z]+,)*[a-z]+$/) 
     /** For uploading the image */
     image ImageBlob maxbytes(IMAGE_MAX_BYTES)
@@ -25,7 +25,7 @@ entity Product {
     thumbnailCdnUrl String /* TODO pattern */
 }
 
-enum Size {
+enum ProductSize {
     S, M, L, XL, XXL
 }
 
