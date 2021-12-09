@@ -1,4 +1,4 @@
-# Tutorial on Microservices Architecture with JHipster :: Geeting started with a monolith application
+# Tutorial on Microservices Architecture with JHipster :: Getting started with a monolith application
 
 * [Generate a monolith application (with Graddle)](monolith.md)
 * [Generate a monolith application (with Maven)](monolith-mvn.md)
