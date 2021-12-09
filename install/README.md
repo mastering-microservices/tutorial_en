@@ -21,7 +21,9 @@ Follow the instructions: https://github.com/creationix/nvm
 ```bash
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 nvm ls-remote
-nvm install v12.22.7
+nvm install v16.12.0
+nvm ls
+nvm use v16.12.0
 nodejs --version
 ```
 
@@ -33,7 +35,7 @@ yo --version
 
 ### JHipster Generator
 ```bash
-npm install -g generator-jhipster@5.1.0
+npm install -g generator-jhipster
 jhipster --version
 # show all the subgenerators
 ```
@@ -49,15 +51,28 @@ docker-compose --version
 ## Heroku
 Follow the instructions: https://devcenter.heroku.com/articles/heroku-cli
 ```bash
-curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+sudo snap install --classic heroku
+# curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
 heroku --version
+heroku help
 ```
 
 Check your Heroku account thru https://signup.heroku.com/
+
+Browser mode:
 ```bash
-heroku help
 heroku login
+```
+
+CLI mode:
+```bash
 heroku login -i
+```
+
+```bash
+heroku apps
+heroku plugins
+heroku logs
 ```
 
 References:
@@ -65,21 +80,28 @@ References:
 
 ## Kubectl
 
-Follow the instructions https://kubernetes.io/docs/tasks/tools/install-kubectl/
+Follow the instructions https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
-## Kubernetes (optionel)
-
-Follow the instructions https://kubernetes.io/docs/setup/ according to your environnement.
+```bash
+kubectl version --client
+```
 
 ## Google Cloud SDK
 Follow the instructions https://cloud.google.com/sdk/docs/downloads-interactive
 ```bash
 curl https://sdk.cloud.google.com | bash
 exec -l $SHELL
-gcloud help
+gcloud --help
 ```
 
 Check your Google Cloud Platform account
 ```bash
 gcloud init
 ```
+
+Sometime, we need:
+```bash
+source .bashrc 
+gcloud --help
+```
+
