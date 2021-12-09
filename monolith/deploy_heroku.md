@@ -1,14 +1,19 @@
-# Tutoriel sur les microservices avec JHipster :: Démarrage avec un monolithe
+# Tutorial on Microservices Architecture with JHipster :: Deployment of the monolyth application
 
-## Lancement l'application store en mode (ie profil) `prod` sur Heroku
+## Deploy the application (`prod` profile) on Heroku
 
-Cont
+Generate files for Heroku
+
 ```bash
 jhipster heroku
 ```
 
 ```
-
+Heroku configuration is starting
+? Name to deploy as: store
+? On which region do you want to deploy ? eu
+? Which type of deployment do you want ? JAR (compile locally)
+? Which Java version would you like to use to build and run your app ? 11
 ```
 
 Depuis la console Heroku, vérifiez que l'application `tuto-store` est créée.
