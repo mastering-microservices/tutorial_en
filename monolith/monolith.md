@@ -1,130 +1,156 @@
-# Tutoriel sur les microservices avec JHipster :: Démarrage avec un monolithe
+# Tutorial on Microservices Architecture with JHipster :: Generate a monolith application
 
-## Recupération des fichiers
+## Get the files
 ```bash
 mkdir -p ~/github/mastering-microservices/
-git clone https://github.com/mastering-microservices/tutorial.git
+git clone https://github.com/mastering-microservices/tutorial_en.git
 ```
 
-## Création de l'application de base
+## Generate the basic application
 ```bash
 mkdir -p ~/github/mastering-microservices/online-store
 cd  ~/github/mastering-microservices/online-store
 jhipster
 ```
+
 ```
 ? Which *type* of application would you like to create? Monolithic application (recommended for simple projects)
 ? What is the base name of your application? store
+? Do you want to make it reactive with Spring WebFlux? No
 ? What is your default Java package name? com.mycompany.store
-? Do you want to use the JHipster Registry to configure, monitor and scale your application? No
 ? Which *type* of authentication would you like to use? JWT authentication (stateless, with a token)
-? Which *type* of database would you like to use? SQL (H2, MySQL, MariaDB, PostgreSQL, Oracle, MSSQL)
-? Which *production* database would you like to use? MySQL
+? Which *type* of database would you like to use? SQL (H2, PostgreSQL, MySQL, MariaDB, Oracle, MSSQL)
+? Which *production* database would you like to use? PostgreSQL
 ? Which *development* database would you like to use? H2 with disk-based persistence
-? Do you want to use the Spring cache abstraction? Yes, with the Ehcache implementation (local cache, for a single node)
+? Which cache do you want to use? (Spring cache abstraction) Ehcache (local cache, for a single node)
 ? Do you want to use Hibernate 2nd level cache? Yes
 ? Would you like to use Maven or Gradle for building the backend? Gradle
-? Which other technologies would you like to use?
-? Which *Framework* would you like to use for the client? Angular 6
-? Would you like to enable *SASS* support using the LibSass stylesheet preprocessor? Yes
+? Do you want to use the JHipster Registry to configure, monitor and scale your application? No
+? Which other technologies would you like to use? 
+? Which *Framework* would you like to use for the client? Angular
+? Do you want to generate the admin UI? Yes
+? Would you like to use a Bootswatch theme (https://bootswatch.com/)? Default JHipster
 ? Would you like to enable internationalization support? Yes
 ? Please choose the native language of the application English
 ? Please choose additional languages to install French
-? Besides JUnit and Jest, which testing frameworks would you like to use? Gatling, Cucumber, Protractor
-? Would you like to install other generators from the JHipster Marketplace? Yes
-? Which other modules would you like to use? (generator-jhipster-docker-2.5.0) Additional Docker support: Docker Hub, Local SMTP Server, NGinx, (generator-jhipster-swagger-cli-3.0.1) JHipster module to generate swagger client code from a swagger definition
+? Besides JUnit and Jest, which testing frameworks would you like to use? Cypress, Gatling, Cucumber
+? Would you like to install other generators from the JHipster Marketplace? No
+? Would you like to generate code coverage for Cypress tests? [Experimental] No
 ```
 
-> Remarque: Jetez un coup d'oeil aux sous-générateurs disponibles (tous ne sont pas compatibles avec la version courante de JHipster ou bien avec le frontend choisi). https://www.jhipster.tech/modules/marketplace/#/list
+> Remark: Have a glance on available sub-generators (some are not compliant with the current version of JHipster): https://www.jhipster.tech/modules/marketplace/#/list
 
-Lancez l'application en profil `dev`.
+
+Read the commit message
+
+```bash
+git log
+```
+
+
+Read the readme
+
+```bash
+cat README.md
+```
+
+Run the application in `dev` profile.
+
 ```bash
 ./gradlew
 ```
 
-Loggez vous en utilisateur `admin` `admin` et parcourez les différents sous-menus d'administration (dont l'API Swagger via Swagger UI).
+Sign in as `admin` `admin` and browse the menu (including the API Swagger thru Swagger UI).
+
 ```bash
 open http://localhost:8080
 ```
 
-## Génération des entités de l'application store
+## Generate the entities and the relationships
 
-Visualisez le [schéma du service monolithique](./online-store.jh) avec le [JDL Studio](https://start.jhipster.tech/jdl-studio/). L'image est [ici](./online-store.jh.png).
+Show the [schema of the monolith application](./online-store.jh) with [JDL Studio](https://start.jhipster.tech/jdl-studio/). The scrrenshot is[here](./online-store.jh.png).
 
-Générez les sources (frontend et backend) relatives aux entités et à leurs relations.
+Generare the source files (for the frontend and the backend) according the entities et the relationships.
 ```bash
 cd  ~/github/mastering-microservices/online-store
-jhipster import-jdl ../tutorial/online-store.jh
+jhipster import-jdl ../tutorial_en/monolith/online-store.jh
 ```
 
-Lancez l'application en profil `dev`.
+Run the application in `dev` profile.
 ```bash
 ./gradlew
 ```
 
-Ouvrez l'application dans un browser avec le rafraissement automatique en cas de modification des sources du frontend
+Run the application in `dev` profile with the browser synchronization
 ```bash
 yarn start
 ```
 
-Ouvrez l'application dans un browser
+Open the website
 ```bash
 open http://localhost:8080
 ```
 
-Loggez vous en utilisateur `admin` `admin` et parcourez l'API Swagger (A)
+Sign in as `admin` `admin` and browse the menu (including the API Swagger thru Swagger UI).
 ```bash
 open http://localhost:8080
 ```
 
-## Lancement des tests générés
+## Testing
 
-### Pour le backend
+### For the backend
 
 ```bash
 cd  ~/github/mastering-microservices/online-store
 ./gradlew test
 ```
 
-### Pour le frontend
+### For the frontend
 ```bash
 yarn test
 ```
 
-Pour les tests end-to-end, lancez le backend depuis un terminal
+## End-to-End (e2e) testing
+
+Term 1
 ```bash
 cd  ~/github/mastering-microservices/online-store
 ./gradlew
 ```
 
-Depuis un autre terminal, lancez le test e2e
+Term 2
 ```bash
 cd  ~/github/mastering-microservices/online-store
 yarn e2e
 ```
 
-## Analyse de la qualité du code
-Lancez un container SonarQube
+## Code quality analysis (FAILED)
+
+Launch the SonarQube container
+
 ```bash
 cd  ~/github/mastering-microservices/online-store
 docker-compose -f src/main/docker/sonar.yml up -d
 docker-compose -f src/main/docker/sonar.yml logs -f
 ^C
 ```
-Attendez qu'il soit démarré et prêt au service.
 
-Lancez l'analyseur SonarQube
+> Remark: you should probably edit src/main/docker/sonar.yml for changing the version (3.9 --> 3.8)
+
+When the container is up, launch the SonarQube analyser
+
 ```bash
-./gradlew sonarqube
+./gradlew -Pprod clean sonarqube
 ```
 
-Visualisez le rapport de l'analyseur SonarQube
+Show the SonarQube report
+
 ```bash
-open http://localhost:9000
-open http://localhost:9000/dashboard?id=com.mycompany.store%3Astore
+open http://localhost:9001
+open http://localhost:9001/dashboard?id=com.mycompany.store%3Astore
 ```
 
-## Mise en place du CI/CD
+## CI/CD (UNDER TRANLATION)
 
 Installez et lancez un serveur Jenkins
 ```bash
