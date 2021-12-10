@@ -1,5 +1,6 @@
-# Tutorial on microservices with JHipster :: Utilisation de l'API REST avec cURL
+# Tutorial on microservices with JHipster :: RESTFul API
 
+## Invoke API REST with cURL
 Run the following commands
 
 ```bash
@@ -121,7 +122,7 @@ ${DELETE} --header "$AUTH" --header "$CONTENT_JSON" ${URL}/api/products/${PRODUC
 
 ```
 
-## Generation of the REST API
+## Generation of the REST clients and servers
 The service descriptor is available here http://localhost:8080/v2/api-docs .
 
 It is generated from the annotations on the classes `Resource` of the package `com.mycompany.store.web.rest`and the Entity or DTO classes (if the [`dto` directive](https://www.jhipster.tech/jdl/) is selected).
