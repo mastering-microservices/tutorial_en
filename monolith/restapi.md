@@ -133,7 +133,7 @@ Install `swagger-codegen` ([More information](https://swagger.io/docs/open-sourc
 VERSION=2.4.9
 mkdir -p ~/github/mastering-microservices/swagger-codegen
 cd ~/github/mastering-microservices/swagger-codegen
-wget https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar
+wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar
 mv swagger-codegen-cli-$VERSION.jar swagger-codegen.jar
 java -jar swagger-codegen.jar help
 ```
