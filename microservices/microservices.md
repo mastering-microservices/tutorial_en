@@ -400,4 +400,17 @@ Open the console
 open http://localhost:5601
 ```
 
+## Generate all the microservices
+You can directly generate all the microservices with their entities 
 
+```bash
+mkdir -p ~/github/mastering-microservices/online-store
+cd  ~/github/mastering-microservices/online-store
+wget https://raw.githubusercontent.com/jhipster/jdl-samples/main/e-commerce-monolith.jdl
+```bash
+
+Edit `e-commerce-monolith.jdl` in order to change the database system (postgresql instead of mysql) and add properties to the `Product` entity.
+
+```bash
+jhipster import-jdl e-commerce-monolith.jdl
+```
