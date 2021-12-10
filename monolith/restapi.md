@@ -130,7 +130,7 @@ You can add [Swagger annotations](https://github.com/swagger-api/swagger-core/wi
 
 Install `swagger-codegen` ([More information](https://swagger.io/docs/open-source-tools/swagger-codegen/)).
 ```bash
-VERSION=2.4.9
+VERSION=2.4.24
 mkdir -p ~/github/mastering-microservices/swagger-codegen
 cd ~/github/mastering-microservices/swagger-codegen
 wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar
