@@ -2,6 +2,7 @@
 
 * [Generate a monolith application (with Graddle)](monolith.md)
 * [Generate a monolith application (with Maven)](monolith-mvn.md)
+* [Inspect the REST API](restapi.md)
 * [Deploy locally with Docker](deploy_docker.md)
 * [Monitor the application](monitor.md)
 * [Load injection with Gatling](gatling.md)
