@@ -47,6 +47,12 @@ Read the commit message
 git log
 ```
 
+Check the generation parameters
+
+```bash
+cat .yo-rc.json
+ls -al .jhipster
+```
 
 Count the lines of code
 
@@ -86,6 +92,13 @@ cd  ~/github/mastering-microservices/online-store
 jhipster import-jdl ../tutorial_en/monolith/online-store.jh
 ```
 
+Check the generation parameters
+
+```bash
+cat .yo-rc.json
+ls -al .jhipster
+```
+
 Count the lines of code
 
 ```bash
@@ -114,6 +127,20 @@ open http://localhost:8080
 Sign in as `admin` `admin` and browse the menu (including the API Swagger thru Swagger UI).
 ```bash
 open http://localhost:8080
+```
+
+
+> Remark: you can directly generate the application with the entities 
+```bash
+mkdir -p ~/github/mastering-microservices/online-store
+cd  ~/github/mastering-microservices/online-store
+wget https://raw.githubusercontent.com/jhipster/jdl-samples/main/e-commerce-monolith.jdl
+```bash
+
+Edit `e-commerce-monolith.jdl` in order to change the database system (postgresql instead of mysql) and add properties to the `Product` entity.
+
+```bash
+jhipster import-jdl e-commerce-monolith.jdl
 ```
 
 ## Testing
