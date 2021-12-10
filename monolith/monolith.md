@@ -82,9 +82,15 @@ Sign in as `admin` `admin` and browse the menu (including the API Swagger thru S
 
 ```bash
 open http://localhost:8080
+open http://localhost:8080
+
 ```
 
+
+
 ## Generate the entities and the relationships
+
+Read first https://www.jhipster.tech/jdl/intro
 
 Show the [schema of the monolith application](./online-store.jh) with [JDL Studio](https://start.jhipster.tech/jdl-studio/). The scrrenshot is[here](./online-store.jh.png).
 
@@ -98,7 +104,6 @@ Check the generation parameters
 
 ```bash
 cat .yo-rc.json
-ls -al .jhipster
 ```
 
 Count the lines of code
@@ -108,7 +113,7 @@ cloc src/ webpack/
 cloc src/ webpack/ *.json *.xml
 ```
 
-Estimate the cost and the time for coding the basic application using https://stackoverflow.com/jobs/salary and a [Cocomo calculator](http://softwarecost.org/tools/COCOMO/)
+Estimate the cost and the time for developing (and testing) the `online-store` application using this [salary calculator](https://stackoverflow.com/jobs/salary) and a [Cocomo calculator](http://softwarecost.org/tools/COCOMO/). Your team members are mainly **full stack developers**.
 
 
 Run the application in `dev` profile.
@@ -131,21 +136,26 @@ Sign in as `admin` `admin` and browse the menu (including the API Swagger thru S
 open http://localhost:8080
 ```
 
+## One-step generation
 
-> Remark: you can directly generate the application with the entities 
+You can directly generate the application with the entities 
 ```bash
-mkdir -p ~/github/mastering-microservices/online-store
-cd  ~/github/mastering-microservices/online-store
+mkdir -p ~/github/mastering-microservices/online-store-1step
+cd  ~/github/mastering-microservices/online-store-1step
 wget https://raw.githubusercontent.com/jhipster/jdl-samples/main/e-commerce-monolith.jdl
 ```
 
-Edit `e-commerce-monolith.jdl` in order to change the database system (postgresql instead of mysql) and add properties (with regex patterns) to the `Product` entity.
+Edit `e-commerce-monolith.jdl` in order to
+* change the database system (`postgresql` instead of `mysql`)
+* and add properties to the `Product` entity with your custom regex `pattern`s.
 
 ```bash
 jhipster import-jdl e-commerce-monolith.jdl
 ```
 
 ## Testing
+
+Read first https://www.jhipster.tech/running-tests/
 
 ### For the backend
 
@@ -175,6 +185,8 @@ yarn e2e
 
 ## Code quality analysis (FAILED)
 
+Read first https://www.jhipster.tech/code-quality/
+
 Launch the SonarQube container
 
 ```bash
@@ -184,12 +196,12 @@ docker-compose -f src/main/docker/sonar.yml logs -f
 ^C
 ```
 
-> Remark: you should probably edit src/main/docker/sonar.yml for changing the version (3.9 --> 3.8)
+> Remark: you should probably edit src/main/docker/sonar.yml for changing the version (3.9 --> 3.3) according to your Docker Compose version.
 
 When the container is up, launch the SonarQube analyser
 
 ```bash
-./gradlew -Pprod clean sonarqube
+./gradlew -Pprod clean check jacocoTestReport sonarqube -Dsonar.host.url=http://localhost:9001
 ```
 
 Show the SonarQube report
@@ -201,7 +213,10 @@ open http://localhost:9001/dashboard?id=com.mycompany.store%3Astore
 
 ## CI/CD with Github actions
 
-Generate the CI/CD files for Github
+Read first https://www.jhipster.tech/setting-up-ci/
+
+Generate the CI/CD files for Github actions
+
 ```bash
 cd  ~/github/mastering-microservices/online-store
 jhipster ci-cd
@@ -209,7 +224,22 @@ jhipster ci-cd
 
 Anwser to the questions:
 ```
-TODO
+🚀 Welcome to the JHipster CI/CD Sub-Generator 🚀
+? What CI/CD pipeline do you want to generate? GitHub Actions
+? What tasks/integrations do you want to include ? Deploy your application to an *Artifactory*, Analyze your cod
+e with *Sonar*, Build and publish a *Docker* image, Deploy to *Heroku* (requires HEROKU_API_KEY set on CI servic
+e)
+? *Artifactory*: what is the ID of distributionManagement for snapshots ? snapshots
+? *Artifactory*: what is the URL of distributionManagement for snapshots ? http://artifactory:8081/artifactory/l
+ibs-snapshot
+? *Artifactory*: what is the ID of distributionManagement for releases ? releases
+? *Artifactory*: what is the URL of distributionManagement for releases ? http://artifactory:8081/artifactory/li
+bs-release
+? *Sonar*: what is the URL of the Sonar server ? https://sonarcloud.io
+? *Sonar*: what is the Organization of the Sonar server ? store-12345
+? *Docker*: what is the name of the image ? jhipster/store
+? *Heroku*: name of your Heroku Application ? store
+WARNING! No support for Artifactory yet, when using Gradle.
 ```
 
 
