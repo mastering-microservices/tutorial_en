@@ -199,7 +199,21 @@ open http://localhost:9001
 open http://localhost:9001/dashboard?id=com.mycompany.store%3Astore
 ```
 
-## CI/CD (UNDER TRANLATION)
+## CI/CD with Github actions
+
+Generate the CI/CD files for Github
+```bash
+cd  ~/github/mastering-microservices/online-store
+jhipster ci-cd
+```
+
+Anwser to the questions:
+```
+TODO
+```
+
+
+## CI/CD with a local Jenkins server (UNDER TRANLATION)
 
 Installez et lancez un serveur Jenkins
 ```bash
