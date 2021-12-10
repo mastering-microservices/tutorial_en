@@ -1,7 +1,6 @@
 # Tutorial on Microservices Architecture with JHipster :: Getting started with a monolith application
 
 * [Generate a monolith application (with Graddle)](monolith.md)
-* [Generate a monolith application (with Maven)](monolith-mvn.md)
 * [Inspect the REST API](restapi.md)
 * [Deploy locally with Docker](deploy_docker.md)
 * [Monitor the application](monitor.md)
@@ -12,4 +11,5 @@
 * [Cleaning](clean.md)
 
 Bonus
+* [Generate a monolith application (with Maven)](monolith-mvn.md)
 * [Generate a mobile frontend with Ionic](ionic.md)
