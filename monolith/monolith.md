@@ -48,6 +48,16 @@ git log
 ```
 
 
+Count the lines of code
+
+```bash
+cloc src/ webpack/
+cloc src/ webpack/ *.json *.xml
+```
+
+Estimate the cost and the time for coding the basic application using https://stackoverflow.com/jobs/salary and a [Cocomo calculator](http://softwarecost.org/tools/COCOMO/)
+
+
 Read the readme
 
 ```bash
@@ -75,6 +85,16 @@ Generare the source files (for the frontend and the backend) according the entit
 cd  ~/github/mastering-microservices/online-store
 jhipster import-jdl ../tutorial_en/monolith/online-store.jh
 ```
+
+Count the lines of code
+
+```bash
+cloc src/ webpack/
+cloc src/ webpack/ *.json *.xml
+```
+
+Estimate the cost and the time for coding the basic application using https://stackoverflow.com/jobs/salary and a [Cocomo calculator](http://softwarecost.org/tools/COCOMO/)
+
 
 Run the application in `dev` profile.
 ```bash
