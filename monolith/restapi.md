@@ -130,12 +130,29 @@ You can add [Swagger annotations](https://github.com/swagger-api/swagger-core/wi
 
 Install `swagger-codegen` ([More information](https://swagger.io/docs/open-source-tools/swagger-codegen/)).
 ```bash
+VERSION=2.4.9
 mkdir -p ~/github/mastering-microservices/swagger-codegen
 cd ~/github/mastering-microservices/swagger-codegen
-wget https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/2.2.1/swagger-codegen-cli-2.2.1.jar
-mv swagger-codegen-cli-2.2.1.jar swagger-codegen.jar
+wget https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar
+mv swagger-codegen-cli-$VERSION.jar swagger-codegen.jar
 java -jar swagger-codegen.jar help
 ```
+
+```
+usage: swagger-codegen-cli <command> [<args>]
+
+The most commonly used swagger-codegen-cli commands are:
+    config-help   Config help for chosen lang
+    generate      Generate code with chosen lang
+    help          Display help information
+    langs         Shows available langs
+    meta          MetaGenerator. Generator for creating a new template set and configuration for Codegen.  The output will be based on the language you specify, and includes default templates to include.
+    validate      Validate specification
+    version       Show version information
+
+See 'swagger-codegen-cli help <command>' for more information on a specific command.
+```
+
 > Available languages: [android, aspnet5, async-scala, cwiki, csharp, cpprest, dart, flash, python-flask, go, groovy, java, jaxrs, jaxrs-cxf, jaxrs-resteasy, jaxrs-spec, inflector, javascript, javascript-closure-angular, jmeter, nancyfx, nodejs-server, objc, perl, php, python, qt5cpp, ruby, scala, scalatra, silex-PHP, sinatra, rails5, slim, spring, dynamic-html, html, html2, swagger, swagger-yaml, swift, tizen, typescript-angular2, typescript-angular, typescript-node, typescript-fetch, akka-scala, CsharpDotNet2, clojure, haskell, lumen, go-server]
 
 ```bash
