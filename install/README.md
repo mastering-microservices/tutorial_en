@@ -41,6 +41,12 @@ nvm use v16.12.0
 nodejs --version
 ```
 
+### Cloc (Count Lines of Code)
+
+```bash
+npm install -g cloc
+```
+
 ### Yeoman
 
 ```bash
