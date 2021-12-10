@@ -41,6 +41,8 @@ jhipster
 > Remark: Have a glance on available sub-generators (some are not compliant with the current version of JHipster): https://www.jhipster.tech/modules/marketplace/#/list
 
 
+> The datatsore should be `PostgreSQL` since PostgreSQL is a free addon on Heroku and the Heroku MySQL addon is not free.
+
 Read the commit message
 
 ```bash
