@@ -6,13 +6,20 @@ IMAGE_MAX_BYTES = 5000000
 
 /** Product sold by the Online store */
 entity Product {
-    sku String required /* TODO pattern */
+    /** SKU of the product https://en.wikipedia.org/wiki/Stock_keeping_unit */
+    sku String required /* TODO pattern : */
+    /** UPC of the product https://en.wikipedia.org/wiki/Universal_Product_Code */
     upc String required /* TODO pattern */
+    /** EAN of the product https://en.wikipedia.org/wiki/International_Article_Number */
+    ean String required /* TODO pattern */
+
     name String required
     description TextBlob
+
     price BigDecimal required min(0)
     productSize ProductSize required
     colors String pattern(/^([a-z]+,)*[a-z]+$/) 
+
     /** For uploading the image */
     image ImageBlob maxbytes(IMAGE_MAX_BYTES)
     /** For caching with HTTP header Etag and If-None-Match */
@@ -41,6 +48,14 @@ entity CustomerDetails {
     addressLine2 String
     city String required
     country String required
+    /** coordinates (latitude and longitude) are found by the backend using external geocoding service (Mapbox, Google Maps ...) */
+    latitude Float
+    /** coordinates (latitude and longitude) are found by the backend using external geocoding service (Mapbox, Google Maps ...) */
+    longitude Float
+    /** geohash is computed from the coordinates. see https://en.wikipedia.org/wiki/Geohash */
+    geohash String /* TODO pattern */
+    /** olc (aka plus code) is computed from the coordinates. see https://en.wikipedia.org/wiki/Open_Location_Code */
+    olc String /* TODO pattern */
 }
 
 enum Gender {
@@ -82,5 +97,22 @@ relationship OneToMany {
     ProductCategory{product} to Product{productCategory(name) required}
 }
 
+// Set pagination options (pagination, pager, infinite-scroll)
+paginate CustomerDetails, ProductCategory with pagination
+paginate Product with infinite-scroll
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+// service all with serviceImpl
 service * with serviceClass
-paginate Product, CustomerDetails, ProductCategory with pagination
+
+// Set an angular suffix
+//angularSuffix * with onlineshop
+
+// Set search
+//search * with elasticsearch
+
+//Set filtering
+//filter *
