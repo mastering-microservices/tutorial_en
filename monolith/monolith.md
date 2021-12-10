@@ -135,9 +135,9 @@ open http://localhost:8080
 mkdir -p ~/github/mastering-microservices/online-store
 cd  ~/github/mastering-microservices/online-store
 wget https://raw.githubusercontent.com/jhipster/jdl-samples/main/e-commerce-monolith.jdl
-```bash
+```
 
-Edit `e-commerce-monolith.jdl` in order to change the database system (postgresql instead of mysql) and add properties to the `Product` entity.
+Edit `e-commerce-monolith.jdl` in order to change the database system (postgresql instead of mysql) and add properties (with regex patterns) to the `Product` entity.
 
 ```bash
 jhipster import-jdl e-commerce-monolith.jdl
