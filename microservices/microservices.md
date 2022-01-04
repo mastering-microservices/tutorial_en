@@ -323,19 +323,19 @@ cd  ~/github/mastering-microservices/notification
 
 ```bash
 cd  ~/github/mastering-microservices/gateway
-./gradlew -Pprod bootWar buildDocker -x test
+./gradlew -Pprod bootJar jibDockerBuild -x test
 docker images | grep gateway
 
 cd  ~/github/mastering-microservices/productorder
-./gradlew -Pprod bootWar buildDocker -x test
+./gradlew -Pprod bootJar jibDockerBuild -x test
 docker images | grep productorder
 
 cd  ~/github/mastering-microservices/invoice
-./gradlew -Pprod bootWar buildDocker -x test
+./gradlew -Pprod bootJar jibDockerBuild -x test
 docker images | grep invoice
 
 cd  ~/github/mastering-microservices/notification
-./gradlew -Pprod bootWar buildDocker -x test
+./gradlew -Pprod bootJar jibDockerBuild -x test
 docker images | grep notification
 ```
 
