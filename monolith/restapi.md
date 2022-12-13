@@ -1,5 +1,6 @@
-# Tutorial on microservices with JHipster :: Utilisation de l'API REST avec cURL
+# Tutorial on microservices with JHipster :: RESTFul API
 
+## Invoke API REST with cURL
 Run the following commands
 
 ```bash
@@ -121,7 +122,7 @@ ${DELETE} --header "$AUTH" --header "$CONTENT_JSON" ${URL}/api/products/${PRODUC
 
 ```
 
-## Generation of the REST API
+## Generation of the REST clients and servers
 The service descriptor is available here http://localhost:8080/v2/api-docs .
 
 It is generated from the annotations on the classes `Resource` of the package `com.mycompany.store.web.rest`and the Entity or DTO classes (if the [`dto` directive](https://www.jhipster.tech/jdl/) is selected).
@@ -130,13 +131,34 @@ You can add [Swagger annotations](https://github.com/swagger-api/swagger-core/wi
 
 Install `swagger-codegen` ([More information](https://swagger.io/docs/open-source-tools/swagger-codegen/)).
 ```bash
+VERSION=2.4.24
 mkdir -p ~/github/mastering-microservices/swagger-codegen
 cd ~/github/mastering-microservices/swagger-codegen
-wget https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli/2.2.1/swagger-codegen-cli-2.2.1.jar
-mv swagger-codegen-cli-2.2.1.jar swagger-codegen.jar
+wget https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/$VERSION/swagger-codegen-cli-$VERSION.jar
+mv swagger-codegen-cli-$VERSION.jar swagger-codegen.jar
 java -jar swagger-codegen.jar help
 ```
-> Available languages: [android, aspnet5, async-scala, cwiki, csharp, cpprest, dart, flash, python-flask, go, groovy, java, jaxrs, jaxrs-cxf, jaxrs-resteasy, jaxrs-spec, inflector, javascript, javascript-closure-angular, jmeter, nancyfx, nodejs-server, objc, perl, php, python, qt5cpp, ruby, scala, scalatra, silex-PHP, sinatra, rails5, slim, spring, dynamic-html, html, html2, swagger, swagger-yaml, swift, tizen, typescript-angular2, typescript-angular, typescript-node, typescript-fetch, akka-scala, CsharpDotNet2, clojure, haskell, lumen, go-server]
+
+```
+usage: swagger-codegen-cli <command> [<args>]
+
+The most commonly used swagger-codegen-cli commands are:
+    config-help   Config help for chosen lang
+    generate      Generate code with chosen lang
+    help          Display help information
+    langs         Shows available langs
+    meta          MetaGenerator. Generator for creating a new template set and configuration for Codegen.  The output will be based on the language you specify, and includes default templates to include.
+    validate      Validate specification
+    version       Show version information
+
+See 'swagger-codegen-cli help <command>' for more information on a specific command.
+```
+
+```
+java -jar swagger-codegen.jar langs
+```
+
+> Available languages: ada, ada-server, akka-scala, android, apache2, apex, aspnetcore, bash, csharp, clojure, cwiki, cpprest, csharp-dotnet2, dart, dart-jaguar, elixir, elm, eiffel, erlang-client, erlang-server, finch, flash, python-flask, go, go-server, groovy, haskell-http-client, haskell, jmeter, jaxrs-cxf-client, jaxrs-cxf, java, inflector, jaxrs-cxf-cdi, jaxrs-spec, jaxrs, msf4j, java-pkmst, java-play-framework, jaxrs-resteasy-eap, jaxrs-resteasy, javascript, javascript-closure-angular, java-vertx, kotlin, lua, lumen, nancyfx, nodejs-server, objc, perl, php, powershell, pistache-server, python, qt5cpp, r, rails5, restbed, ruby, rust, rust-server, scala, scala-gatling, scala-lagom-server, scalatra, scalaz, php-silex, sinatra, slim, spring, dynamic-html, html2, html, swagger, swagger-yaml, swift4, swift3, swift, php-symfony, tizen, typescript-aurelia, typescript-angular, typescript-inversify, typescript-angularjs, typescript-fetch, typescript-jquery, typescript-node, undertow, ze-ph, kotlin-server
 
 ```bash
 codegen() {
