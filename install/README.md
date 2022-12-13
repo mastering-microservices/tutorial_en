@@ -136,8 +136,18 @@ Follow the instructions https://cloud.google.com/sdk/docs/downloads-interactive
 ```bash
 curl https://sdk.cloud.google.com | bash
 exec -l $SHELL
-gcloud --help
+gcloud --version
 ```
+
+At Dec 15, 2022.
+````
+Google Cloud SDK 411.0.0
+bq 2.0.83
+core 2022.12.05
+gcloud-crc32c 1.0.0
+gsutil 5.17
+```
+
 
 Check your Google Cloud Platform account
 ```bash
