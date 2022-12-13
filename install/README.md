@@ -12,32 +12,42 @@ git clone git@github.com:mastering-microservices/tutorial_en.git
 Follow the instructions: https://www.jhipster.tech/installation/
 
 ### JDK (AdoptOpenJDK)
+Download and install the latest LTS (Long Term Support) release of [AdoptOpenJDK](https://adoptopenjdk.net/releases.html) for your system.
+
+> `jdk-11.0.17+8` is the latest LTS at Dec 15, 2022
 
 ```bash
-cd
-wget https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.13%2B8/OpenJDK11U-jdk_x64_linux_hotspot_11.0.13_8.tar.gz
-tar xzf OpenJDK11U-jdk_x64_linux_hotspot_11.0.13_8.tar.gz
-export PATH=$PWD/jdk-11.0.13+8/bin:$PATH
+cd ~/Downloads
+wget https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.17%2B8/OpenJDK11U-jdk_x64_linux_hotspot_11.0.17_8.tar.gz
+tar xzf OpenJDK11U-jdk_x64_linux_hotspot_11.0.17_8.tar.gz
+export PATH=$PWD/jdk-11.0.17+8/bin:$PATH
 java -version
 ```
 
 ```
-openjdk version "11.0.13" 2021-10-19
-OpenJDK Runtime Environment Temurin-11.0.13+8 (build 11.0.13+8)
-OpenJDK 64-Bit Server VM Temurin-11.0.13+8 (build 11.0.13+8, mixed mode)
+openjdk version "11.0.17" 2022-10-25
+OpenJDK Runtime Environment Temurin-11.0.17+8 (build 11.0.17+8)
+OpenJDK 64-Bit Server VM Temurin-11.0.17+8 (build 11.0.17+8, mixed mode)
 ```
 
-Add `export PATH=$PWD/jdk-11.0.13+8/bin:$PATH` to `.bashrc`
+Add `export PATH=$PWD/jdk-11.0.17+8/bin:$PATH` to `.bashrc`
+
 
 ### Nvm et Node
 
 Follow the instructions: https://github.com/creationix/nvm
+
+Install `npm`
 ```bash
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+```
+
+Install the latest LTS of NodeJS (and `npm`)
+```bash
 nvm ls-remote
-nvm install v16.12.0
+nvm install v18.12.1
 nvm ls
-nvm use v16.12.0
+nvm use v18.12.1
 nodejs --version
 ```
 
@@ -62,13 +72,23 @@ jhipster --version
 # show all the subgenerators
 ```
 
+```
+INFO! Using bundled JHipster
+7.9.3
+```
+
+> 7.9.3 (Dec. 15, 2022) 
+
 ## Docker CE
+
+Install Docker CE + Docker Compose or Docker Desktop on your system.
 
 Follow the instructions https://docs.docker.com/install/ and https://docs.docker.com/compose/install/ for `docker-compose`.
 
 ```bash
 docker --version
 docker-compose --version
+docker compose --version
 ```
 
 ## Heroku
@@ -111,6 +131,7 @@ kubectl version --client
 ```
 
 ## Google Cloud SDK
+
 Follow the instructions https://cloud.google.com/sdk/docs/downloads-interactive
 ```bash
 curl https://sdk.cloud.google.com | bash
