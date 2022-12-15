@@ -15,20 +15,26 @@ jhipster kubernetes
 Answer to the questions:
 ```
 ? Which *type* of application would you like to deploy? Microservice application
-? Enter the root directory where your gateway(s) and microservices are located ../
-3 applications found at ~/github/mastering-microservices/
-? Which applications do you want to include in your configuration? gateway, invo
-ice, notification
-? Do you want to setup monitoring for your applications ? Yes, for logs and metr
-ics with the JHipster Console (based on ELK and Zipkin)
-? Which applications do you want to use with clustered databases (only available with MongoDB and Couchbase)? notification
+
+? Enter the root directory where your gateway(s) and microservices are located 
+../
+4 applications found at /Users/donsez/github/mastering-microservices/
+
+? Which applications do you want to include in your configuration? gateway, 
+invoice, notification, productorder
+? Do you want to setup monitoring for your applications ? Yes, for metrics only 
+with Prometheus
+? Which applications do you want to use with clustered databases (only available
+ with MongoDB and Couchbase)? notification
 JHipster registry detected as the service discovery and configuration provider used by your apps
 ? Enter the admin password used to secure the JHipster Registry admin
 ? What should we use for the Kubernetes namespace? store
 ? What should we use for the base Docker repository name? masteringmicroservice
 ? What command should we use for push Docker image to repository? docker push
-? Do you want to configure Istio? Not required
-? Choose the kubernetes service type for your edge services LoadBalancer - Let a kubernetes cloud provider automatically assign an IP
+? Do you want to enable Istio? No
+? Choose the Kubernetes service type for your edge services LoadBalancer - Let a
+ Kubernetes cloud provider automatically assign an IP
+? Do you want to use dynamic storage provisioning for your stateful services? No
 ```
 
 > Remark: You can use Google Container Registry for storing the containers images into a private registry. You should use the Docker registry gcr.io/YOUR_PROJECT_ID (gcr.io/tuto-store) in this exercice).
