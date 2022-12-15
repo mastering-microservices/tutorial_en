@@ -174,6 +174,8 @@ cd ~/github/mastering-microservices/gateway
 ./gradlew
 ```
 
+> If gradlew fails on `java.lang.IllegalArgumentException: Unsupported class file major version 6x`, you must edit this `gradle/wrapper/gradle-wrapper.properties` for fixing a newer version of the gradle binary (`gradle-*-bin.zip`)
+
 ### Browse the application
 
 ```bash
@@ -192,12 +194,14 @@ open http://localhost:8761
 cd  ~/github/mastering-microservices/productorder
 ./gradlew
 ```
+> If gradlew fails on `java.lang.IllegalArgumentException: Unsupported class file major version 6x`, you must edit this `gradle/wrapper/gradle-wrapper.properties` for fixing a newer version of the gradle binary (`gradle-*-bin.zip`)
+
 > Remark : H2 is the database system for `dev` porfile. A port conflit de port (`3306`) between the mysql container used by the gateway and the mysql container used by the gateway used by microservice.
 
-Have a look on the Swagger descriptor
+Have a look on the OpenAPI descriptor
 ```bash
-wget http://localhost:8081/v2/api-docs -O swagger.json
-jq "." swagger.json
+wget http://localhost:8081/v3/api-docs -O openapi.json
+jq "." openapi.json
 ```
 
 ### Launch the microservice `invoice` (`dev` profile)
@@ -206,10 +210,13 @@ cd  ~/github/mastering-microservices/invoice
 ./gradlew
 ```
 
-Have a look on the Swagger descriptor
+> If gradlew fails on `java.lang.IllegalArgumentException: Unsupported class file major version 6x`, you must edit this `gradle/wrapper/gradle-wrapper.properties` for fixing a newer version of the gradle binary (`gradle-*-bin.zip`)
+
+
+Have a look on the OpenAPI descriptor
 ```bash
-wget http://localhost:8082/v2/api-docs -O swagger.json
-jq "." swagger.json
+wget http://localhost:8082/v3/api-docs -O openapi.json
+jq "." openapi.json
 ```
 
 ### Launch the microservice `notification` (`dev` profile)
@@ -228,10 +235,12 @@ cd  ~/github/mastering-microservices/notification
 ./gradlew
 ```
 
-Have a look on the Swagger descriptor
+> If gradlew fails on `java.lang.IllegalArgumentException: Unsupported class file major version 6x`, you must edit this `gradle/wrapper/gradle-wrapper.properties` for fixing a newer version of the gradle binary (`gradle-*-bin.zip`)
+
+Have a look on the OpenAPI descriptor
 ```bash
-wget http://localhost:8083/v2/api-docs -O swagger.json
-jq "." swagger.json
+wget http://localhost:8083/v3/api-docs -O openapi.json
+jq "." openapi.json
 ```
 
 ### Browse the application
@@ -271,6 +280,7 @@ The relationship OneToMany `ProductOrder{invoice} to Invoice{order}` is replaced
 ```bash
 cd  ~/github/mastering-microservices/gateway
 jhipster import-jdl ../tutorial_en/microservices/gateway-jdl-all.jh
+git status
 ```
 
 ## Generation of the code of the microservice `productorder`
@@ -278,6 +288,7 @@ jhipster import-jdl ../tutorial_en/microservices/gateway-jdl-all.jh
 ```bash
 cd  ~/github/mastering-microservices/productorder
 jhipster import-jdl ../tutorial_en/microservices/productorder-jdl.jh
+git status
 ```
 
 ## Generation of the code of the microservice `invoice`
@@ -285,6 +296,7 @@ jhipster import-jdl ../tutorial_en/microservices/productorder-jdl.jh
 ```bash
 cd  ~/github/mastering-microservices/invoice
 jhipster import-jdl ../tutorial_en/microservices/invoice-jdl.jh
+git status
 ```
 
 ## Generation of the code of the microservice `notification`
@@ -292,6 +304,7 @@ jhipster import-jdl ../tutorial_en/microservices/invoice-jdl.jh
 ```bash
 cd  ~/github/mastering-microservices/notification
 jhipster import-jdl ../tutorial_en/microservices/notification-jdl.jh
+git status
 ```
 
 ### Launch the service registry
