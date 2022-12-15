@@ -6,12 +6,12 @@ IMAGE_MAX_BYTES = 5000000
 
 /** Product sold by the Online store */
 entity Product {
-    /** SKU of the product https://en.wikipedia.org/wiki/Stock_keeping_unit */
-    sku String required /* TODO pattern : */
-    /** UPC of the product https://en.wikipedia.org/wiki/Universal_Product_Code */
-    upc String required /* TODO pattern */
-    /** EAN of the product https://en.wikipedia.org/wiki/International_Article_Number */
-    ean String required /* TODO pattern */
+    // SKU of the product https://en.wikipedia.org/wiki/Stock_keeping_unit : TODO pattern
+    sku String required
+    // UPC of the product https://en.wikipedia.org/wiki/Universal_Product_Code : TODO pattern
+    upc String required 
+    // EAN of the product https://en.wikipedia.org/wiki/International_Article_Number : TODO pattern
+    ean String required 
 
     name String required
     description TextBlob
@@ -20,16 +20,16 @@ entity Product {
     productSize ProductSize required
     colors String pattern(/^([a-z]+,)*[a-z]+$/) 
 
-    /** For uploading the image */
+    // For uploading the image
     image ImageBlob maxbytes(IMAGE_MAX_BYTES)
-    /** For caching with HTTP header Etag and If-None-Match */
+    // For caching with HTTP header Etag and If-None-Match
     imageSha1 String minlength(SHA_LEN) maxlength(SHA_LEN) pattern(/[a-f0-9]{40}/)
-    /** For the content delivery network */
-    imageCdnUrl String /* TODO pattern */
-    /** For caching with HTTP header Etag and If-None-Match */
+    // For the content delivery network  TODO pattern
+    imageCdnUrl String
+    // For caching with HTTP header Etag and If-None-Match
     thumbnailSha1 String minlength(SHA_LEN) maxlength(SHA_LEN) pattern(/[a-f0-9]{40}/)
-    /** For the content delivery network */
-    thumbnailCdnUrl String /* TODO pattern */
+    // For the content delivery network  TODO pattern
+    thumbnailCdnUrl String
 }
 
 enum ProductSize {
@@ -48,14 +48,15 @@ entity CustomerDetails {
     addressLine2 String
     city String required
     country String required
-    /** coordinates (latitude and longitude) are found by the backend using external geocoding service (Mapbox, Google Maps ...) */
+
+    // coordinates (latitude and longitude) are found by the backend using external geocoding service (Mapbox, Google Maps ...)
     latitude Float
-    /** coordinates (latitude and longitude) are found by the backend using external geocoding service (Mapbox, Google Maps ...) */
+    // coordinates (latitude and longitude) are found by the backend using external geocoding service (Mapbox, Google Maps ...)
     longitude Float
-    /** geohash is computed from the coordinates. see https://en.wikipedia.org/wiki/Geohash */
-    geohash String /* TODO pattern */
-    /** olc (aka plus code) is computed from the coordinates. see https://en.wikipedia.org/wiki/Open_Location_Code */
-    olc String /* TODO pattern */
+    // geohash is computed from the coordinates. see https://en.wikipedia.org/wiki/Geohash  TODO pattern
+    geohash String
+    // olc (aka plus code) is computed from the coordinates. see https://en.wikipedia.org/wiki/Open_Location_Code TODO pattern
+    olc String
 }
 
 enum Gender {
