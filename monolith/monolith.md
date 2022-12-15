@@ -44,8 +44,8 @@ JHipster
 ? Besides JUnit and Jest, which testing frameworks would you like to use? 
 Cypress, Gatling, Cucumber
 ? Would you like to install other generators from the JHipster Marketplace? No
-? Would you like to generate code coverage for Cypress tests? [Experimental] No
-? Would you like to audit Cypress tests? No
+? Would you like to generate code coverage for Cypress tests? [Experimental] Yes
+? Would you like to audit Cypress tests? Yes
 ```
 
 > Remark: You can choose React or Vue for the client framework if you feel more confortable with them.
@@ -121,7 +121,7 @@ cloc src/ webpack/
 cloc src/ webpack/ *.json *.xml
 ```
 
-Estimate the cost and the time for developing (and testing) the `online-store` application using this [salary calculator](https://stackoverflow.com/jobs/salary) and a [Cocomo calculator](http://softwarecost.org/tools/COCOMO/). Your team members are mainly **full stack developers**.
+Estimate the new cost and the new time for coding the basic application using a [Cocomo calculator](http://softwarecost.org/tools/COCOMO/) and some job salary propositions for fulstack developers.
 
 
 Run the application in `dev` profile.
@@ -155,6 +155,7 @@ wget https://raw.githubusercontent.com/jhipster/jdl-samples/main/e-commerce-mono
 
 Edit `e-commerce-monolith.jdl` in order to
 * change the database system (`postgresql` instead of `mysql`)
+* change the client framework (`angular` instead of `react`)
 * and add properties to the `Product` entity with your custom regex `pattern`s.
 
 ```bash
@@ -242,54 +243,70 @@ Anwser to the questions:
 ```
 🚀 Welcome to the JHipster CI/CD Sub-Generator 🚀
 ? What CI/CD pipeline do you want to generate? GitHub Actions
-? What tasks/integrations do you want to include ? Deploy your application to an *Artifactory*, Analyze your cod
-e with *Sonar*, Build and publish a *Docker* image, Deploy to *Heroku* (requires HEROKU_API_KEY set on CI servic
-e)
-? *Artifactory*: what is the ID of distributionManagement for snapshots ? snapshots
-? *Artifactory*: what is the URL of distributionManagement for snapshots ? http://artifactory:8081/artifactory/l
-ibs-snapshot
-? *Artifactory*: what is the ID of distributionManagement for releases ? releases
-? *Artifactory*: what is the URL of distributionManagement for releases ? http://artifactory:8081/artifactory/li
-bs-release
+? What tasks/integrations do you want to include ? Analyze your code with *Sonar*, Build and publish a *Docker* 
+image, *Snyk*: dependency scanning for security vulnerabilities (requires SNYK_TOKEN), Deploy to *Heroku* (requires
+ HEROKU_API_KEY set on CI service), Would you like to enable the *Cypress Dashboard* (requires both 
+CYPRESS_PROJECT_ID and CYPRESS_RECORD_KEY set on CI service)
 ? *Sonar*: what is the URL of the Sonar server ? https://sonarcloud.io
-? *Sonar*: what is the Organization of the Sonar server ? store-12345
+? *Sonar*: what is the Organization of the Sonar server ? mosig
 ? *Docker*: what is the name of the image ? jhipster/store
 ? *Heroku*: name of your Heroku Application ? store
-WARNING! No support for Artifactory yet, when using Gradle.
 ```
 
 
 ## CI/CD with a local Jenkins server (UNDER TRANLATION)
 
-Installez et lancez un serveur Jenkins
+
+Anwser to the questions:
+```
+🚀 Welcome to the JHipster CI/CD Sub-Generator 🚀
+? What CI/CD pipeline do you want to generate? Jenkins pipeline
+? Would you like to perform the build in a Docker container ? No
+? Would you like to send build status to GitLab ? No
+? What tasks/integrations do you want to include ? Deploy your application to an *Artifactory*, Analyze your code 
+with *Sonar*, Build and publish a *Docker* image, *Snyk*: dependency scanning for security vulnerabilities 
+(requires SNYK_TOKEN), Deploy to *Heroku* (requires HEROKU_API_KEY set on CI service)
+? *Artifactory*: what is the ID of distributionManagement for snapshots ? snapshots
+? *Artifactory*: what is the URL of distributionManagement for snapshots ? 
+http://artifactory:8081/artifactory/libs-snapshot
+? *Artifactory*: what is the ID of distributionManagement for releases ? releases
+? *Artifactory*: what is the URL of distributionManagement for releases ? 
+http://artifactory:8081/artifactory/libs-release
+? *Sonar*: what is the name of the Sonar server ? sonar
+? *Heroku*: name of your Heroku Application ? store
+WARNING! No support for Artifactory yet, when using Gradle.
+```
+
+
+Install and launch the Jenkins server
 ```bash
 mkdir -p ~/github/mastering-microservices/jenkins
 wget http://ftp-chi.osuosl.org/pub/jenkins/war-stable/2.150.1/jenkins.war
 java -jar jenkins.war --httpPort=8989
 ```
 
-Ouvrez la page de configuration du serveur Jenkins
+Open the configuration panel of the Jenkins console
 ```bash
 open https://localhost:8989
 ```
 
-Configurez le serveur Jenkins. Le clé admin se trouve dans la trace de la console de l'application Jenkins. Vous pouvez ajouter des addons comme [Blue Ocean](https://jenkins.io/projects/blueocean/), ...
+Configure the Jenkins server. The admin key can be found in the console trace of the Jenkins application. You can add addons like [Blue Ocean](https://jenkins.io/projects/blueocean/), ...
 
-Générez le pipeline Jenkinsfile pour le projet online-store
+Generate the pipeline Jenkinsfile for your project online-store
 ```bash
 cd  ~/github/mastering-microservices/online-store
 jhipster ci-cd
 cat Jenkinsfile
 ```
 
-Poussez le projet `online-store` vers un dépot Git (public ou privé) préalablement créé.
+Push the `online-store` project to your Git repository (public or private) previously create.
 ```bash
 GITHUB_USERNAME=moncomptegithub
 git remote add origin git@github.com:$GITHUB_USERNAME/online-store.git
 git push -u origin master
 ```
 
-Ajoutez le pipeline `Jenkinsfile` pour le projet `online-store`.
+Add the pipeline `Jenkinsfile` for the project `online-store`.
 
 
 
