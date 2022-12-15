@@ -92,6 +92,7 @@ docker compose --version
 ```
 
 ## Heroku
+Get your Heroku credits with your [Github Student Developer Pack](https://blog.heroku.com/github-student-developer-program).
 
 Follow the instructions: https://devcenter.heroku.com/articles/heroku-cli
 ```bash
