@@ -10,36 +10,47 @@ git clone https://github.com/mastering-microservices/tutorial_en.git
 ```bash
 mkdir -p ~/github/mastering-microservices/online-store
 cd  ~/github/mastering-microservices/online-store
+nvm use stable
 jhipster
 ```
 
 ```
-? Which *type* of application would you like to create? Monolithic application (recommended for simple projects)
+? Which *type* of application would you like to create? Monolithic application 
+(recommended for simple projects)
 ? What is the base name of your application? store
 ? Do you want to make it reactive with Spring WebFlux? No
-? What is your default Java package name? com.mycompany.store
-? Which *type* of authentication would you like to use? JWT authentication (stateless, with a token)
-? Which *type* of database would you like to use? SQL (H2, PostgreSQL, MySQL, MariaDB, Oracle, MSSQL)
+? What is your default Java package name? mosig.cloud.store
+? Which *type* of authentication would you like to use? JWT authentication 
+(stateless, with a token)
+? Which *type* of database would you like to use? SQL (H2, PostgreSQL, MySQL, 
+MariaDB, Oracle, MSSQL)
 ? Which *production* database would you like to use? PostgreSQL
-? Which *development* database would you like to use? H2 with disk-based persistence
-? Which cache do you want to use? (Spring cache abstraction) Ehcache (local cache, for a single node)
+? Which *development* database would you like to use? H2 with disk-based 
+persistence
+? Which cache do you want to use? (Spring cache abstraction) Ehcache (local 
+cache, for a single node)
 ? Do you want to use Hibernate 2nd level cache? Yes
 ? Would you like to use Maven or Gradle for building the backend? Gradle
-? Do you want to use the JHipster Registry to configure, monitor and scale your application? No
+? Do you want to use the JHipster Registry to configure, monitor and scale your 
+application? No
 ? Which other technologies would you like to use? 
 ? Which *Framework* would you like to use for the client? Angular
 ? Do you want to generate the admin UI? Yes
-? Would you like to use a Bootswatch theme (https://bootswatch.com/)? Default JHipster
+? Would you like to use a Bootswatch theme (https://bootswatch.com/)? Default 
+JHipster
 ? Would you like to enable internationalization support? Yes
-? Please choose the native language of the application English
-? Please choose additional languages to install French
-? Besides JUnit and Jest, which testing frameworks would you like to use? Cypress, Gatling, Cucumber
+? Please choose the native language of the application French
+? Please choose additional languages to install English
+? Besides JUnit and Jest, which testing frameworks would you like to use? 
+Cypress, Gatling, Cucumber
 ? Would you like to install other generators from the JHipster Marketplace? No
 ? Would you like to generate code coverage for Cypress tests? [Experimental] No
+? Would you like to audit Cypress tests? No
 ```
 
-> Remark: Have a glance on available sub-generators (some are not compliant with the current version of JHipster): https://www.jhipster.tech/modules/marketplace/#/list
+> Remark: You can choose React or Vue for the client framework if you feel more confortable with them.
 
+> Remark: Have a glance on available sub-generators : https://www.jhipster.tech/modules/marketplace/#/list (some are not compliant with the current version of JHipster and some are not available for the frontend framework)
 
 > The datatsore should be `PostgreSQL` since PostgreSQL is a free addon on Heroku and the Heroku MySQL addon is not free.
 
@@ -63,8 +74,7 @@ cloc src/ webpack/
 cloc src/ webpack/ *.json *.xml
 ```
 
-Estimate the cost and the time for coding the basic application using https://stackoverflow.com/jobs/salary and a [Cocomo calculator](http://softwarecost.org/tools/COCOMO/)
-
+Estimate the cost and the time for coding the basic application using a [Cocomo calculator](http://softwarecost.org/tools/COCOMO/) and some job salary propositions for fulstack developers.
 
 Read the readme
 
@@ -77,6 +87,8 @@ Run the application in `dev` profile.
 ```bash
 ./gradlew
 ```
+
+> If gradlew fails on `java.lang.IllegalArgumentException: Unsupported class file major version 6x`, you must edit this `gradle/wrapper/gradle-wrapper.properties` for fixing a newer version of the gradle binary (`gradle-*-bin.zip`)
 
 Sign in as `admin` `admin` and browse the menu (including the API Swagger thru Swagger UI).
 
