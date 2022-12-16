@@ -182,6 +182,8 @@ cd ~/github/mastering-microservices/gateway
 
 ### Browse the application
 
+When the gateway is ready (Message `Application 'gateway' is running! Access URLs:` in the console), you can browser the web application.
+
 ```bash
 open http://localhost:8080
 ```
@@ -202,7 +204,7 @@ cd  ~/github/mastering-microservices/productorder
 
 > Remark : H2 is the database system for `dev` porfile. A port conflit de port (`3306`) between the mysql container used by the gateway and the mysql container used by the gateway used by microservice.
 
-Have a look on the OpenAPI descriptor
+When the microservice 'productorder' is ready (Message `Application 'productorder' is running! Access URLs:` in the console), have a look on the [OpenAPI descriptor](http://localhost:8081/v3/api-docs)
 ```bash
 wget http://localhost:8081/v3/api-docs -O openapi.json
 jq "." openapi.json
@@ -213,13 +215,12 @@ jq "." openapi.json
 cd  ~/github/mastering-microservices/invoice
 ./gradlew
 ```
-
 > If gradlew fails on `java.lang.IllegalArgumentException: Unsupported class file major version 6x`, you must edit this `gradle/wrapper/gradle-wrapper.properties` for fixing a newer version of the gradle binary (`gradle-*-bin.zip`)
 
+When the microservice 'invoice' is ready (Message `Application 'invoice' is running! Access URLs:` in the console), have a look on the [OpenAPI descriptor](http://localhost:8082/v3/api-docs)
 
-Have a look on the OpenAPI descriptor
 ```bash
-wget http://localhost:8082/v3/api-docs -O openapi.json
+wget  -O openapi.json
 jq "." openapi.json
 ```
 
@@ -241,7 +242,7 @@ cd  ~/github/mastering-microservices/notification
 
 > If gradlew fails on `java.lang.IllegalArgumentException: Unsupported class file major version 6x`, you must edit this `gradle/wrapper/gradle-wrapper.properties` for fixing a newer version of the gradle binary (`gradle-*-bin.zip`)
 
-Have a look on the OpenAPI descriptor
+When the microservice 'notification' is ready (Message `Application 'notification' is running! Access URLs:` in the console), have a look on the [OpenAPI descriptor](http://localhost:8083/v3/api-docs)
 ```bash
 wget http://localhost:8083/v3/api-docs -O openapi.json
 jq "." openapi.json
@@ -419,7 +420,21 @@ Since ELK stack is heavy , prefer Prometheus and Grafana for monitoring your arc
 
 [Follow the instructions](https://www.jhipster.tech/monitoring/).
 
+```bash
+cd ~/github/mastering-microservices/gateway
+docker-compose -f src/main/docker/monitoring.yml up -d
+docker-compose -f src/main/docker/monitoring.yml logs -f
+```
+
+Open the console
+```bash
+open http://localhost:3000
+```
+Default password for `admin` user is admin` . Grafana will ask you to change it !
+
 ### ELK (Elasticsearch, Logstash, Kibana) Stack
+
+This section is optional.
 
 ```bash
 cd ~/github/mastering-microservices
@@ -445,6 +460,8 @@ open http://localhost:5601
 ```
 
 ## Remark: Generate all the microservices
+
+This section is optional.
 
 You can directly generate all the microservices with their entities 
 
