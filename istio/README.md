@@ -1,5 +1,11 @@
 # Tutorial on Microservices Architecture with JHipster :: Service Mesh with Istio
 
+
+To enable Istio support:
+
+* When asked `Do you want to configure Istio?`, choose one of the Istio options
+* When asked `Do you want to generate Istio route files`, choose `Yes` to generate default configuration for circuit breaking, etc.
+
 L'objectif de cette partie est la mise en place de microservices avec Istio.
 
 Coming soon
