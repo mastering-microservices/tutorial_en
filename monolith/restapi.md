@@ -170,8 +170,8 @@ codegen() {
 Get the Swagger definition. You can install the tool `jq` (https://stedolan.github.io/jq/download/) for formatting the document `swagger.json`.
 ```bash
 cd ~/github/mastering-microservices/swagger-codegen
-wget http://localhost:8080/v2/api-docs -O swagger.json
-jq '.' swagger.json
+wget http://localhost:8080/v3/api-docs -O openapi.json
+jq '.' openapi.json
 ```
 
 > Remark: A plugin [Swagger Codegen](https://github.com/swagger-api/swagger-codegen/tree/master/modules/swagger-codegen-maven-plugin) for Maven is available.
