@@ -5,15 +5,17 @@ This part aims the generation and the deployment of an application following a m
 ## Architecture
 
 The architecture is composed of :
-* the JHipster service registry
-* The JHipster API Gateway
+* the JHipster [Service Registry](https://microservices.io/patterns/service-registry.html) (Service discovery uses Haezlcast)
+* The JHipster [API Gateway](https://microservices.io/patterns/apigateway.html)
 * one microservice `productorder` (using a `mysql` database)
-* one microservice `invoice` (using a `postgres` database)
-* one microservice `notification` (using a `mongodb` database)
+* one microservice `invoice` (using a `postgresql` database)
+* one microservice `notification` (using `mongodb` database)
 
-The frontend acces to the microservices thru the API Gateway.
+The SPA frontend accesses to the microservices thru the API Gateway.
 
-### Generation of the gateway (empty)
+> Warning: The port numbers should be `8080` for gateway, `8081` for productorder, `8082` for invoice and `8083` for notification.
+
+### Generation of the `gateway` (without entities)
 ```bash
 mkdir -p ~/github/mastering-microservices/gateway
 cd  ~/github/mastering-microservices/gateway
@@ -26,7 +28,7 @@ Answer to the questions:
 ? What is the base name of your application? gateway
 ? As you are running in a microservice architecture, on which port would like 
 your server to run? It should be unique to avoid port conflicts. 8080
-? What is your default Java package name? mosig.cloud.store
+? What is your default Java package name? mosig.cloud.store.gateway
 ? Which service discovery server do you want to use? JHipster Registry (uses 
 Eureka, provides Spring Cloud Config support and monitoring dashboards)
 ? Which *type* of authentication would you like to use? JWT authentication 
@@ -56,7 +58,9 @@ Cypress, Gatling, Cucumber
 ? Would you like to audit Cypress tests? Yes
 ```
 
-### Generation of the (empty) microservice `productorder`
+> You can choose React or Vue instead of Angular if you feel more confortable with them.
+
+### Generation of the microservice `productorder` (without entities)
 ```bash
 mkdir -p ~/github/mastering-microservices/productorder
 cd  ~/github/mastering-microservices/productorder
@@ -91,7 +95,7 @@ for multiple nodes, supports rate-limiting for gateway applications)
 ? Would you like to install other generators from the JHipster Marketplace? No
 ```
 
-### Generation of the (empty) microservice `invoice`
+### Generation of the (microservice `invoice` (without entities)
 
 ```bash
 mkdir -p ~/github/mastering-microservices/invoice
@@ -127,7 +131,7 @@ for multiple nodes, supports rate-limiting for gateway applications)
 ? Would you like to install other generators from the JHipster Marketplace? No
 ```
 
-### Generation of the (empty) microservice `notification`
+### Generation of the microservice `notification` (without entities)
 ```bash
 mkdir -p ~/github/mastering-microservices/notification
 cd  ~/github/mastering-microservices/notification
@@ -266,8 +270,8 @@ open http://localhost:8761
 You should refactor the schema of the application online-store in three microservices and generate their source code.
 
 The entities are scattered between
-* the microservice productorder [productorder-jdl.jh](./productorder-jdl.jh)
-* the microservice microservice invoice [invoice-jdl.jh](./invoice-jdl.jh)
+* the microservice `productorder` [productorder-jdl.jh](./productorder-jdl.jh)
+* the microservice `invoice` [invoice-jdl.jh](./invoice-jdl.jh)
 
 New entities are added into the microservice notification [notification-jdl.jh](./notification-jdl.jh)
 
@@ -405,7 +409,17 @@ docker-compose scale invoice-app=2
 
 ## Monitor the microservices
 
+[Observability](https://microservices.io/patterns/observability/application-metrics.html) is an important requirement.
+
 [More detail](https://www.jhipster.tech/monitoring/).
+
+Since ELK stack is heavy , prefer Prometheus and Grafana for monitoring your architecture.
+
+### Prometheus and Grafana
+
+[Follow the instructions](https://www.jhipster.tech/monitoring/).
+
+### ELK (Elasticsearch, Logstash, Kibana) Stack
 
 ```bash
 cd ~/github/mastering-microservices
@@ -431,7 +445,10 @@ open http://localhost:5601
 ```
 
 ## Remark: Generate all the microservices
+
 You can directly generate all the microservices with their entities 
+
+> Remenber to change the client frontend framework !
 
 ```bash
 mkdir -p ~/github/mastering-microservices/microservices
