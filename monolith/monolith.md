@@ -64,7 +64,6 @@ Check the generation parameters
 
 ```bash
 cat .yo-rc.json
-ls -al .jhipster
 ```
 
 Count the lines of code
@@ -112,6 +111,7 @@ Check the generation parameters
 
 ```bash
 cat .yo-rc.json
+ls -al .jhipster
 ```
 
 Count the lines of code
@@ -146,6 +146,8 @@ open http://localhost:8080
 
 ## One-step generation
 
+> This section is optional.
+
 You can directly generate the application with the entities 
 ```bash
 mkdir -p ~/github/mastering-microservices/online-store-1step
@@ -163,6 +165,8 @@ jhipster import-jdl e-commerce-monolith.jdl
 ```
 
 ## Testing
+
+> This section is optional.
 
 Read first https://www.jhipster.tech/running-tests/
 
@@ -194,6 +198,8 @@ yarn e2e
 
 ## Code quality analysis with SonarQube
 
+> This section is optional.
+
 Read first https://www.jhipster.tech/code-quality/
 
 Launch the SonarQube container
@@ -209,10 +215,9 @@ docker-compose -f src/main/docker/sonar.yml logs -f
 
 When the container is up, launch the SonarQube analyser
 
-Remove the file `src/test/features/user/user.feature` (or fix it !) since the test is failed !
-
+Remove the file `src/test/*/user.feature` (or fix it !) since the test is failed !
 ```bash
-mv src/test/features/user/user.feature src/test/features/user/user.feature.TO_FIX
+find src -name "*.feature"
 ```
 
 ```bash
