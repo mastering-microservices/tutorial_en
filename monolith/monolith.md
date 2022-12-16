@@ -48,6 +48,8 @@ Cypress, Gatling, Cucumber
 ? Would you like to audit Cypress tests? Yes
 ```
 
+> Remark: You can add more languages for the internationalization support.
+
 > Remark: You can choose React or Vue for the client framework if you feel more confortable with them.
 
 > Remark: Have a glance on available sub-generators : https://www.jhipster.tech/modules/marketplace/#/list (some are not compliant with the current version of JHipster and some are not available for the frontend framework)
@@ -129,20 +131,28 @@ Run the application in `dev` profile.
 ./gradlew
 ```
 
+Open the web application served by the backend and sign in as `admin` `admin` and browse the menu (including the API Swagger thru Swagger UI).
+
+```bash
+open http://localhost:8080
+```
+
 Run the application in `dev` profile with the browser synchronization
 ```bash
 yarn start
+# npm start
 ```
 
-Open the website
+Open the web application served by the BrowserSync (launched by `yarn start`) and sign in as `admin` `admin` and browse the menu (including the API Swagger thru Swagger UI).
+
 ```bash
-open http://localhost:8080
+open http://localhost:????
 ```
 
-Sign in as `admin` `admin` and browse the menu (including the API Swagger thru Swagger UI).
-```bash
-open http://localhost:8080
-```
+Complete the field `footer` with your name into the `i8n` messages files:
+* src/main/webapp/i18n/fr/global.json
+* src/main/webapp/i18n/en/global.json
+* src/main/webapp/i18n/<YOUR FAVORITE LANGUAGE>/global.json
 
 ## One-step generation
 
@@ -196,6 +206,8 @@ cd  ~/github/mastering-microservices/online-store
 yarn e2e
 ```
 
+> If the e2e test is too long, you can interupt it !
+
 ## Code quality analysis with SonarQube
 
 > This section is optional.
@@ -235,6 +247,8 @@ open http://localhost:9001/dashboard?id=store
 
 ## CI/CD with Github actions
 
+> This section is optional.
+
 Read first https://www.jhipster.tech/setting-up-ci/
 
 Generate the CI/CD files for Github actions
@@ -259,8 +273,9 @@ CYPRESS_PROJECT_ID and CYPRESS_RECORD_KEY set on CI service)
 ```
 
 
-## CI/CD with a local Jenkins server (UNDER TRANLATION)
+## CI/CD with a local Jenkins server
 
+> This section is optional.
 
 Anwser to the questions:
 ```
