@@ -25,7 +25,7 @@ URL=http://localhost:$PORT
 #URL=https://storeNOMPRENOM.herukoapp.com:$PORT
 
 # Doc
-URL_APIDOC=${URL}/v2/api-docs
+URL_APIDOC=${URL}/v3/api-docs
 
 # Operations
 # CURL="curl --verbose"
@@ -123,7 +123,7 @@ ${DELETE} --header "$AUTH" --header "$CONTENT_JSON" ${URL}/api/products/${PRODUC
 ```
 
 ## Generation of the REST clients and servers
-The service descriptor is available here http://localhost:8080/v2/api-docs .
+The service descriptor is available here http://localhost:8080/v3/api-docs .
 
 It is generated from the annotations on the classes `Resource` of the package `com.mycompany.store.web.rest`and the Entity or DTO classes (if the [`dto` directive](https://www.jhipster.tech/jdl/) is selected).
 
