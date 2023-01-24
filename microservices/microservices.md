@@ -358,21 +358,31 @@ cd  ~/github/mastering-microservices/notification
 
 ```bash
 cd  ~/github/mastering-microservices/gateway
-./gradlew -Pprod bootWar buildDocker -x test
+cat README.md
+nvm use stable
+npm run java:docker
 docker images | grep gateway
 
 cd  ~/github/mastering-microservices/productorder
-./gradlew -Pprod bootWar buildDocker -x test
+cat README.md
+nvm use stable
+npm run java:docker
 docker images | grep productorder
 
 cd  ~/github/mastering-microservices/invoice
-./gradlew -Pprod bootWar buildDocker -x test
+cat README.md
+nvm use stable
+npm run java:docker
 docker images | grep invoice
 
 cd  ~/github/mastering-microservices/notification
-./gradlew -Pprod bootWar buildDocker -x test
+cat README.md
+nvm use stable
+npm run java:docker
 docker images | grep notification
 ```
+
+> Use `npm run java:docker:arm64` for Mac Silicon
 
 ## Generation the docker-compose files
 ```bash
@@ -384,13 +394,14 @@ jhipster docker-compose
 Answer to the questions:
 ```
 ? Which *type* of application would you like to deploy? Microservice application
-? Which *type* of gateway would you like to use? JHipster gateway based on Netflix Zuul
+? Which *type* of gateway would you like to use? JHipster gateway based on Spring Cloud Gateway
 ? Enter the root directory where your gateway(s) and microservices are located ../
-3 applications found at ~/github/mastering-microservices/
-? Which applications do you want to include in your configuration? gateway, invoice, notification
+4 applications found at /Users/donsez/github/mastering-microservices/
+
+? Which applications do you want to include in your configuration? gateway, invoice, notification, productorder
 ? Which applications do you want to use with clustered databases (only available with MongoDB and Couchbase)? notification
-? Do you want to setup monitoring for your applications ? Yes, for logs and metrics with the JHipster Console (based on ELK and Zipkin)
-? You have selected the JHipster Console which is based on the ELK stack and additional technologies, which one do you want to use ? Curator, to help you curate and manage your Elasticsearch indices, Zipkin, for distributed tracing (only compatible with JHipster >= v4.2.0) JHipster registry detected as the service discovery and configuration provider used by your apps
+? Do you want to setup monitoring for your applications ? Yes, for metrics only with Prometheus
+JHipster registry detected as the service discovery and configuration provider used by your apps
 ? Enter the admin password used to secure the JHipster Registry admin
 ```
 
@@ -432,7 +443,7 @@ open http://localhost:3000
 ```
 Default password for `admin` user is admin` . Grafana will ask you to change it !
 
-### ELK (Elasticsearch, Logstash, Kibana) Stack
+### ELK (Elasticsearch, Logstash, Kibana) Stack (if your host had plenty GB of RAM)
 
 This section is optional.
 
