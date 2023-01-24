@@ -1,5 +1,8 @@
 # Tutorial on Microservices Architecture with JHipster :: Deployment with Kubernetes
 
+* Read https://www.jhipster.tech/gcp/
+* Read https://www.jhipster.tech/kubernetes/
+
 ```bash
 docker --version
 kubectl version
