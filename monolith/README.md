@@ -1,5 +1,8 @@
 # Tutorial on Microservices Architecture with JHipster :: Getting started with a monolith application
 
+> This tutorial is valid for JHipster 7.9.3 (`jhipster --version`). Please, check the command lines for building and running into the generated `README.md` documents if the commands fail.
+
+
 * [Generate a monolith application (with Graddle)](monolith.md)
 * [Inspect the REST API](restapi.md)
 * [Deploy locally with Docker](deploy_docker.md)
