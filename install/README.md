@@ -1,5 +1,7 @@
 # Tutorial on Microservices Architecture with JHipster :: Installation
 
+> This tutorial is valid for JHipster 7.9.3 (`jhipster --version`). Please, check the command lines for building and running into the generated `README.md` documents if the commands fail.
+
 ## Working directory
 ```bash
 mkdir -p ~/github/mastering-microservices
