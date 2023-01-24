@@ -2,6 +2,8 @@
 
 This part aims the generation and the deployment of an application following a microservices architecture with JHipster.
 
+> This tutorial is valid for JHipster 7.9.3 (`jhipster --version`). Please, check the command lines for building and running into the generated `README.md` documents if the commands fail.
+
 ## Architecture
 
 The architecture is composed of :
@@ -409,6 +411,28 @@ Launch the containers
 ```bash
 docker-compose up -d
 docker-compose ps
+```
+
+```
+                   Name                                 Command               State           Ports         
+------------------------------------------------------------------------------------------------------------
+docker-compose_alertmanager_1                /bin/alertmanager --config ...   Up      0.0.0.0:9093->9093/tcp
+docker-compose_gateway-postgresql_1          docker-entrypoint.sh postgres    Up      5432/tcp              
+docker-compose_gateway_1                     bash -c /entrypoint.sh           Up      0.0.0.0:8080->8080/tcp
+docker-compose_grafana_1                     /run.sh                          Up      0.0.0.0:3000->3000/tcp
+docker-compose_invoice-mysql_1               docker-entrypoint.sh mysql ...   Up      3306/tcp, 33060/tcp   
+docker-compose_invoice_1                     bash -c /entrypoint.sh           Up      5701/udp, 8082/tcp    
+docker-compose_jhipster-registry_1           bash -c /entrypoint.sh           Up      0.0.0.0:8761->8761/tcp
+docker-compose_notification-mongodb-node_1   docker-entrypoint.sh mongo ...   Up      27017/tcp             
+docker-compose_notification-mongodb_1        docker-entrypoint.sh mongo ...   Up      27017/tcp             
+docker-compose_notification_1                bash -c /entrypoint.sh           Up      5701/udp, 8083/tcp    
+docker-compose_productorder-postgresql_1     docker-entrypoint.sh postgres    Up      5432/tcp              
+docker-compose_productorder_1                bash -c /entrypoint.sh           Up      5701/udp, 8081/tcp    
+docker-compose_prometheus_1                  /bin/prometheus --config.f ...   Up      0.0.0.0:9090->9090/tcp
+notification-mongodb-config                  docker-entrypoint.sh mongo ...   Up      27017/tcp 
+```
+
+```bash
 docker-compose logs -f
 ```
 
@@ -429,13 +453,17 @@ Since ELK stack is heavy , prefer Prometheus and Grafana for monitoring your arc
 
 ### Prometheus and Grafana
 
+Grafana and Prometheus are launched into the composition thanks to your answer to the query `? Do you want to setup monitoring for your applications ? Yes, for metrics only with Prometheus`
+
 [Follow the instructions](https://www.jhipster.tech/monitoring/).
 
+<!--
 ```bash
 cd ~/github/mastering-microservices/gateway
 docker-compose -f src/main/docker/monitoring.yml up -d
 docker-compose -f src/main/docker/monitoring.yml logs -f
 ```
+-->
 
 Open the console
 ```bash
