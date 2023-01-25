@@ -471,6 +471,14 @@ open http://localhost:3000
 ```
 Default password for `admin` user is admin` . Grafana will ask you to change it !
 
+
+### Zipkin
+
+[Zipkin](https://zipkin.io/) is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. 
+
+[Follow the instructions](https://www.jhipster.tech/monitoring/#zipkin).
+
+
 ### ELK (Elasticsearch, Logstash, Kibana) Stack (if your host had plenty GB of RAM)
 
 This section is optional.
@@ -504,7 +512,7 @@ This section is optional.
 
 You can directly generate all the microservices with their entities 
 
-> Remenber to change the client frontend framework !
+> Remember to change the client frontend framework !
 
 ```bash
 mkdir -p ~/github/mastering-microservices/microservices
