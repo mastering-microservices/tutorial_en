@@ -384,7 +384,7 @@ npm run java:docker
 docker images | grep notification
 ```
 
-> Use `npm run java:docker:arm64` for Mac Silicon
+> Use `npm run java:docker:arm64` for Mac Silicon. However, you should rebuild the microservices' images for `intel x86` architecture before pushing them the GCP registry in order to run on GCP's k8n cluster.
 
 ## Generation the docker-compose files
 ```bash
