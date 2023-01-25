@@ -386,7 +386,7 @@ docker images | grep notification
 
 > Use `npm run java:docker:arm64` for Mac Silicon. However, you should rebuild the microservices' images for `intel x86` architecture before pushing them the GCP registry in order to run on GCP's k8n cluster.
 
-## Generation the docker-compose files
+## Generation the `docker-compose` files
 ```bash
 mkdir -p  ~/github/mastering-microservices/docker-compose
 cd  ~/github/mastering-microservices/docker-compose
@@ -445,17 +445,18 @@ docker-compose scale invoice-app=2
 
 ## Monitor the microservices
 
-[Observability](https://microservices.io/patterns/observability/application-metrics.html) is an important requirement.
+[Observability](https://microservices.io/patterns/observability/application-metrics.html) is an important requirement in microservices architecture.
 
-[More detail](https://www.jhipster.tech/monitoring/).
+[More detail on monitoring with JHipster-generated microservices](https://www.jhipster.tech/monitoring/).
 
-Since ELK stack is heavy , prefer Prometheus and Grafana for monitoring your architecture.
+> Since ELK stack is really heavy, prefer Prometheus and Grafana for monitoring your architecture.
 
 ### Prometheus and Grafana
 
-Grafana and Prometheus are launched into the composition thanks to your answer to the query `? Do you want to setup monitoring for your applications ? Yes, for metrics only with Prometheus`
 
 [Follow the instructions](https://www.jhipster.tech/monitoring/).
+
+> Grafana and Prometheus are launched into the composition thanks to your answer to the query `? Do you want to setup monitoring for your applications ? Yes, for metrics only with Prometheus`
 
 <!--
 ```bash
@@ -473,6 +474,8 @@ Default password for `admin` user is admin` . Grafana will ask you to change it 
 
 
 ### Zipkin
+
+> This section is optional.
 
 [Zipkin](https://zipkin.io/) is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. 
 
@@ -508,7 +511,7 @@ open http://localhost:5601
 
 ## Remark: Generate all the microservices
 
-This section is optional.
+> This section is optional.
 
 You can directly generate all the microservices with their entities 
 
